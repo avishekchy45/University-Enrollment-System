@@ -1,0 +1,138 @@
+body {
+    background-image: url(img/background.jpg);
+    background-repeat: repeat-x;
+}
+html,
+body {
+    height: 100%;
+}
+.content {
+    min-height: 80%;
+}
+
+.bottomdiv {
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    border-top: skyblue 2px solid;
+    position: relative;
+    clear: both;
+    bottom: 0;
+}
+.buttonstyle1 {
+    border-right: inactivecaption 1px solid;
+    border-top: inactivecaption 1px solid;
+    border-left: inactivecaption 1px solid;
+    border-bottom: inactivecaption 1px solid;
+    background-color: #434e54;
+    color: Yellow;
+    font-family: Palatino Linotype;
+    font-weight: bolder;
+    font-size: 9pt;
+    cursor: pointer;
+}
+.buttonstyle1:hover {
+    background-color: #003366;
+    color: White;
+}
+.buttonstyle2 {
+    font-family: Palatino Linotype;
+    font-size: 10pt;
+    font-weight: bolder;
+}
+.buttonstyle2:hover {
+    color: Maroon;
+}
+.menu {
+    background-color: #003333;
+    height: 25px;
+    width: 100px;
+    cursor: pointer;
+    font-size: 10pt;
+    color: white;
+    border-top-style: none;
+    font-family: Verdana;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+}
+.menu:hover {
+    background-color: #00c0c0;
+}
+.signoutbtn {
+    color: White;
+    background-color: #003333;
+    border-style: None;
+    font-family: Palatino Linotype;
+    font-size: 10pt;
+    font-weight: bold;
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+}
+.signoutbtn:hover {
+    color: rgb(241, 16, 8);
+}
+.power {
+    font-size: 9pt;
+    vertical-align: middle;
+    color: black;
+    font-style: normal;
+    font-family: Palatino Linotype;
+    font-variant: small-caps;
+    text-transform: capitalize;
+    text-decoration: none;
+    float: center;
+    text-align: center;
+}
+.sidebaropt {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 8pt;
+    color: white;
+    margin-top: 4px;
+    padding-top: 5px;
+    font-family: Verdana;
+    height: 25px;
+    background-color: #003333;
+    text-decoration: none;
+    float: center;
+    text-align: center;
+}
+.sidebaropt:hover {
+    background-color: #00c0c0;
+}
+
+.options {
+    color: White !important;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: arial, sans-serif;
+    border-radius: 5px 5px 0px 0px;
+    cursor: pointer;
+    background-image: url(img/1.png);
+    border: skyblue 2px solid;
+    float: center;
+    text-align: center;
+}
+.options:hover {
+    background-image: url(img/2.png);
+}
+.optionline {
+    margin: 0px 0px 0px 0px;
+    border-top: #085893 3px solid;
+    position: relative;
+    clear: both;
+    bottom: 0;
+    margin-top: -0.5rem !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
+.navbar-toggler {
+    margin-left: -0.9rem !important;
+}
+@media only screen and (min-width: 600px) {
+    .mainpage {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+}
