@@ -73,7 +73,7 @@ body {
     color: rgb(241, 16, 8);
 }
 .power {
-    font-size: 9pt;
+    font-size: smaller;
     vertical-align: middle;
     color: black;
     font-style: normal;
@@ -97,6 +97,8 @@ body {
     text-decoration: none;
     float: center;
     text-align: center;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
 }
 .sidebaropt:hover {
     background-color: #00c0c0;
@@ -127,9 +129,9 @@ body {
     margin-left: 1rem !important;
     margin-right: 1rem !important;
 }
-.navbar-toggler {
+/* .navbar-toggler {
     margin-left: -0.9rem !important;
-}
+} */
 @media only screen and (min-width: 600px) {
     .mainpage {
         margin-left: 1rem !important;
