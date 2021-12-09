@@ -9,7 +9,6 @@ body {
 .content {
     min-height: 80%;
 }
-
 .bottomdiv {
     width: 100%;
     margin: 0px 0px 0px 0px;
@@ -103,7 +102,6 @@ body {
 .sidebaropt:hover {
     background-color: #00c0c0;
 }
-
 .options {
     color: White !important;
     font-size: 11px;
@@ -128,10 +126,8 @@ body {
     margin-top: -0.5rem !important;
     margin-right: 1rem !important;
 }
-.mainopt{
+.mainopt {
     margin-left: -1rem !important;
-    margin-right: -1rem !important;
-   
 }
 
 @media only screen and (min-width: 600px) {
@@ -139,8 +135,10 @@ body {
         /* margin-left: 1rem !important; */
         margin-right: 1rem !important;
     }
-    .mainopt{
-        margin-left: -1rem !important;
-        margin-right: 1rem !important;
+}
+@media only screen and (max-width: 600px) {
+    .mainopt {
+        /* margin-left: -1rem !important; */
+        margin-right: -1rem !important;
     }
 }

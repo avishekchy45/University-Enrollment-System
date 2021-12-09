@@ -17,7 +17,8 @@ class CreateDepartmentsTable extends Migration
             $table->id();
             $table->string('shortform')->unique();
             $table->string('fullfrom')->unique();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

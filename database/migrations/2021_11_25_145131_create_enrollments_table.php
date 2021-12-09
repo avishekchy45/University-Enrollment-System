@@ -20,7 +20,8 @@ class CreateEnrollmentsTable extends Migration
             $table->unique(['student_id', 'course_id']);
             $table->string('session');
             $table->string('status');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->foreign('student_id')->references('student_id')->on('students')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');
         });

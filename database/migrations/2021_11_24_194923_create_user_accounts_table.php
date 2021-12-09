@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUserAccountsTable extends Migration
 {
@@ -17,8 +18,9 @@ class CreateUserAccountsTable extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('role');
-            $table->string('password');
-            $table->timestamps();
+            $table->string('password')->default(Hash::make('123456'));
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

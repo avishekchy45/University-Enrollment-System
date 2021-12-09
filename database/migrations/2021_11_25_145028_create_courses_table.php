@@ -21,7 +21,8 @@ class CreateCoursesTable extends Migration
             $table->bigInteger('semester_id')->unsigned()->index();
             $table->string('type');
             $table->double('credit');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('semester_id')->references('id')->on('semesters')->onUpdate('cascade')->onDelete('cascade');
         });

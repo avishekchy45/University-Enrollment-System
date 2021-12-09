@@ -17,7 +17,8 @@ class CreateAdvisorsTable extends Migration
             $table->id();
             $table->string('teacher_id')->index();
             $table->integer('batch');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->foreign('teacher_id')->references('teacher_id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
         });
     }
