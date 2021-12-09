@@ -36,5 +36,6 @@
         <a href="reports" style="text-decoration: none">
             <div class="sidebaropt">Reports</div>
         </a>
-    </li><br>
+    </li>
+    <br>
 </ul>
