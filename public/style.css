@@ -43,16 +43,17 @@ body {
 }
 .menu {
     background-color: #003333;
-    height: 25px;
-    width: 100px;
     cursor: pointer;
+    /* height: 25px;
+    width: 100px; */
     font-size: 10pt;
     color: white;
-    border-top-style: none;
     font-family: Verdana;
+    /* border-top-style: none;
     border-right-style: none;
     border-left-style: none;
-    border-bottom-style: none;
+    border-bottom-style: none; */
+    border-radius: 0px 0px 0px 0px;
 }
 .menu:hover {
     background-color: #00c0c0;

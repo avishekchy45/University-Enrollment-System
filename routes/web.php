@@ -70,6 +70,6 @@ Route::get('/student', function () {
 Route::get('/enrollcourse', function () {
     return view('student.enroll_course');
 });
-Route::get('/checkstatus', function () {
-    return view('student.check_status');
+Route::get('/checkrequests', function () {
+    return view('student.check_requests');
 });
