@@ -19,10 +19,7 @@
     <div class='collapse navbar-collapse' style="text-align: center;" id='collapsibleNavbar'>
         <ul class='navbar-nav'>
             <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='#'> Wall </a>
-            </li>
-            <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='#'> Wall </a>
+                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='teacher'> Wall </a>
             </li>
         </ul>
     </div>

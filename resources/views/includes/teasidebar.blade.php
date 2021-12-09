@@ -11,20 +11,5 @@
         <a href="enrollstudent" style="text-decoration: none">
             <div class="sidebaropt">Enrollment</div>
         </a>
-    </li>
-    <li class='nav-item'>
-        <a href="checkrequest" style="text-decoration: none">
-            <div class="sidebaropt">Enrollment Request</div>
-        </a>
-    </li>
-    <li class='nav-item'>
-        <a href="#" style="text-decoration: none">
-            <div class="sidebaropt">Results</div>
-        </a>
-    </li>
-    <li class='nav-item'>
-        <a href="#" style="text-decoration: none">
-            <div class="sidebaropt">Reports</div>
-        </a>
     </li><br>
 </ul>

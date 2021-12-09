@@ -59,8 +59,8 @@ Route::get('/teacher', function () {
 Route::get('/enrollstudent', function () {
     return view('teacher.enroll_student');
 });
-Route::get('/checkrequest', function () {
-    return view('teacher.check_request');
+Route::get('/updaterequests', function () {
+    return view('teacher.update_requests');
 });
 
 // Student Pages
