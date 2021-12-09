@@ -1,4 +1,4 @@
-<nav class='navbar navbar-expand-sm navbar-dark sticky-top'>
+<nav class='navbar navbar-expand-sm navbar-dark sticky-top px-5'>
     <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
         <tbody>
             <tr>
