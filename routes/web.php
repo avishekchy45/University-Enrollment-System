@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+
+// Admin Pages
 Route::get('/admin', function () {
     return view('admin.profile');
 });
@@ -50,7 +52,7 @@ Route::get('/courselist', function () {
     return view('admin.student_list');
 });
 
-
+// Teacher Pages
 Route::get('/teacher', function () {
     return view('teacher.profile');
 });
@@ -60,13 +62,14 @@ Route::get('/enrollstudent', function () {
 Route::get('/checkrequest', function () {
     return view('teacher.check_request');
 });
+
+// Student Pages
 Route::get('/student', function () {
     return view('student.profile');
 });
 Route::get('/enrollcourse', function () {
     return view('student.enroll_course');
 });
-
 Route::get('/checkstatus', function () {
     return view('student.check_status');
 });

@@ -15,7 +15,7 @@
                         <tbody>
                             <tr>
                                 <td style="height: 25px;text-align:left;">
-                                    &nbsp; &nbsp;
+                                    &nbsp;
                                     <input type="submit" name="ctl00$btn_home" value="Home" id="ctl00_btn_home" class="menu">|
                                 </td>
                                 <td style="height: 25px; text-align:right;">

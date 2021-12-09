@@ -9,7 +9,7 @@
 @endsection
 
 @section('main')
-<nav class='navbar navbar-expand-sm navbar-light'>
+<nav class='navbar navbar-expand-sm navbar-light mainopt'>
     <!-- <div class="d-block d-md-none">
         <span>Click here for more options</span>
     </div> -->
