@@ -20,7 +20,8 @@ class CreateTeachersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('phone_num')->nullable();
             $table->string('address')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->foreign('teacher_id')->references('username')->on('user_accounts')->onUpdate('cascade')->onDelete('cascade');
         });
     }
