@@ -21,35 +21,35 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.profile');
 });
-Route::get('/addcourse', function () {
-    return view('admin.add_course');
-});
-Route::get('/updateadvisor', function () {
-    return view('admin.update_advisor');
-});
 Route::get('/addteacher', function () {
     return view('admin.add_teacher');
 });
+Route::get('/teacherlist', function () {
+    return view('admin.teacher_list');
+});
 Route::get('/addstudent', function () {
     return view('admin.add_student');
+});
+Route::get('/studentlist', function () {
+    return view('admin.student_list');
+});
+Route::get('/addadvisor', function () {
+    return view('admin.add_advisor');
+});
+Route::get('/advisorlist', function () {
+    return view('admin.advisor_list');
+});
+Route::get('/addcourse', function () {
+    return view('admin.add_course');
+});
+Route::get('/courselist', function () {
+    return view('admin.course_list');
 });
 Route::get('/enrollmentlist', function () {
     return view('admin.enrollment_list');
 });
 Route::get('/overlaplist', function () {
     return view('admin.overlap_list');
-});
-Route::get('/teacherlist', function () {
-    return view('admin.teacher_list');
-});
-Route::get('/studentlist', function () {
-    return view('admin.student_list');
-});
-Route::get('/advisorlist', function () {
-    return view('admin.teacher_list');
-});
-Route::get('/courselist', function () {
-    return view('admin.student_list');
 });
 
 // Teacher Pages
@@ -59,8 +59,8 @@ Route::get('/teacher', function () {
 Route::get('/enrollstudent', function () {
     return view('teacher.enroll_student');
 });
-Route::get('/checkrequest', function () {
-    return view('teacher.check_request');
+Route::get('/updaterequests', function () {
+    return view('teacher.update_requests');
 });
 
 // Student Pages
@@ -70,6 +70,6 @@ Route::get('/student', function () {
 Route::get('/enrollcourse', function () {
     return view('student.enroll_course');
 });
-Route::get('/checkstatus', function () {
-    return view('student.check_status');
+Route::get('/checkrequests', function () {
+    return view('student.check_requests');
 });

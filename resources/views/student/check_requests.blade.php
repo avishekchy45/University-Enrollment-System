@@ -16,10 +16,10 @@
     <div class='collapse navbar-collapse' style="text-align: center;" id='collapsibleNavbar'>
         <ul class='navbar-nav'>
             <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='#'> Wall </a>
+                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='enrollcourse'> Enrollment </a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='#'> Wall </a>
+                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='checkrequests'> Check Requests </a>
             </li>
         </ul>
     </div>
@@ -28,6 +28,7 @@
     <span></span>
 </div>
 <br>
-
-
+<div class="mainpage">
+    
+</div>
 @endsection

@@ -1,9 +1,8 @@
-@extends('layouts.teacher')
+@extends('layouts.admin')
 
 @section('head')
-<title>PUC-Teacher Home | Teacher</title>
+<title>PUC-Admin Home | Admin</title>
 @endsection
-
 
 @section('main')
 <nav class='navbar navbar-expand-sm navbar-light mainopt'>
@@ -16,10 +15,10 @@
     <div class='collapse navbar-collapse' style="text-align: center;" id='collapsibleNavbar'>
         <ul class='navbar-nav'>
             <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='#'> Wall </a>
+                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='addadvisor'> Add Advisor </a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='#'> Wall </a>
+                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='advisorlist'> Advisors List </a>
             </li>
         </ul>
     </div>
@@ -28,6 +27,7 @@
     <span></span>
 </div>
 <br>
+<div class="mainpage">
 
-
+</div>
 @endsection

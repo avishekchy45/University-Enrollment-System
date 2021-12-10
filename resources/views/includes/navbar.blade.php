@@ -16,10 +16,10 @@
                             <tr>
                                 <td style="height: 25px;text-align:left;">
                                     &nbsp;
-                                    <input type="submit" name="ctl00$btn_home" value="Home" id="ctl00_btn_home" class="menu">|
+                                    <a href="/" class="btn menu">Home</a>
                                 </td>
                                 <td style="height: 25px; text-align:right;">
-                                    <input type="submit" name="ctl00$Btn_Signout" value="Signout" id="ctl00_Btn_Signout" class="signoutbtn">
+                                    <a href="?signout" class="btn signoutbtn">Signout</a>
                                 </td>
                                 <td style="width: 19px; height: 25px;">
                                 </td>
@@ -29,8 +29,6 @@
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -59,7 +57,6 @@
                     <span style="color:Firebrick;font-family:Palatino Linotype;font-size:10pt;font-weight:bold;text-decoration:none;">1803410201578</span>
                 </td>
             </tr>
-
         </tbody>
     </table>
 </nav>
