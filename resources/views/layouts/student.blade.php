@@ -12,6 +12,15 @@
         <div class="container-fluid p-0">
             <div class="row no-gutters header">
                 <div class="col-sm text-center">
+                    @if(Session::has('errormsg'))
+                    <div class="alert alert-danger" role="alert">
+                        {{Session::get('errormsg')}}
+                    </div>
+                    @elseif(Session::has('successmsg'))
+                    <div class="alert alert-success" role="alert">
+                        {{Session::get('successmsg')}}
+                    </div>
+                    @endif
                     @include('includes.header')
                     @yield('header')
                 </div>
