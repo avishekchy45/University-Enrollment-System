@@ -1,5 +1,5 @@
 body {
-    background-image: url(img/background.jpg);
+    background-image: url(images/background.jpg);
     background-repeat: repeat-x;
 }
 html,
@@ -110,13 +110,13 @@ body {
     font-family: arial, sans-serif;
     border-radius: 5px 5px 0px 0px;
     cursor: pointer;
-    background-image: url(img/1.png);
+    background-image: url(images/1.png);
     border: skyblue 2px solid;
     float: center;
     text-align: center;
 }
 .options:hover {
-    background-image: url(img/2.png);
+    background-image: url(images/2.png);
 }
 .optionline {
     margin: 0px 0px 0px 0px;

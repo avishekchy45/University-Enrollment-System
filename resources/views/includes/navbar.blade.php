@@ -3,7 +3,7 @@
         <tbody>
             <tr>
                 <td style="height: 49px; text-align: left; vertical-align: top; border-bottom: #727272 2px solid;" colspan="3">
-                    <img alt="Premier University" src="puclogo.jpg" style="height: 40px">
+                    <img alt="Premier University" src="images/puclogo.jpg" style="height: 40px">
                     <span style="font-size: 12pt; color: #000000; font-family: Palatino Linotype">
                         <strong> Premier University | I Am <span style="color:Firebrick;font-weight:bold;">Avishek Chowdhury</span></strong>
                     </span>
@@ -19,7 +19,7 @@
                                     <a href="/" class="btn menu">Home</a>
                                 </td>
                                 <td style="height: 25px; text-align:right;">
-                                    <a href="?signout" class="btn signoutbtn">Signout</a>
+                                    <a href="/logout" class="btn signoutbtn">Signout</a>
                                 </td>
                                 <td style="width: 19px; height: 25px;">
                                 </td>
