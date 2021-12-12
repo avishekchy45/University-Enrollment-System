@@ -5,7 +5,7 @@
                 <td style="height: 49px; text-align: left; vertical-align: top; border-bottom: #727272 2px solid;" colspan="3">
                     <img alt="Premier University" src="images/puclogo.jpg" style="height: 40px">
                     <span style="font-size: 12pt; color: #000000; font-family: Palatino Linotype">
-                        <strong> Premier University | I Am <span style="color:Firebrick;font-weight:bold;">Avishek Chowdhury</span></strong>
+                        <strong> Premier University | I Am <span style="color:Firebrick;font-weight:bold;">{{session('name')}}</span></strong>
                     </span>
                 </td>
             </tr>
@@ -40,7 +40,7 @@
                         <tbody>
                             <tr>
                                 <td style="vertical-align: top; height: 25px;text-align:left;">
-                                    <span style="color:DarkRed;font-family:Palatino Linotype;font-size:14pt;font-weight:bold;text-decoration:none;">Avishek Chowdhury</span>
+                                    <span style="color:DarkRed;font-family:Palatino Linotype;font-size:14pt;font-weight:bold;text-decoration:none;">{{session('name')}}</span>
                                 </td>
                             </tr>
                             <tr>
@@ -54,7 +54,7 @@
                 </td>
                 <td style="vertical-align: bottom; float: right;">
                     <span style="font-size: 10pt; font-family: Palatino Linotype">ID: </span>
-                    <span style="color:Firebrick;font-family:Palatino Linotype;font-size:10pt;font-weight:bold;text-decoration:none;">1803410201578</span>
+                    <span style="color:Firebrick;font-family:Palatino Linotype;font-size:10pt;font-weight:bold;text-decoration:none;">{{session('username')}}</span>
                 </td>
             </tr>
         </tbody>

@@ -1,3 +1,12 @@
+/*Font Design*/
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+
+body {
+    font-family: "Bree Serif", serif;
+}
+
+/*Main*/
 body {
     background-image: url(images/background.jpg);
     background-repeat: repeat-x;
@@ -129,6 +138,23 @@ body {
 }
 .mainopt {
     margin-left: -1rem !important;
+}
+.formheader {
+    color: #003333 !important;
+}
+.formheader:hover {
+    color: #00c0c0 !important;
+}
+.list {
+    font-family: Verdana;
+    font-size: small;
+}
+.tableheader {
+    background-color: #1c5e55 !important;
+    color: white;
+}
+.tableheader:hover {
+    background-color: #00c0c0 !important;
 }
 
 @media only screen and (min-width: 600px) {
