@@ -28,9 +28,10 @@
 </div>
 <br>
 <div class="mainpage">
-    <h5 class='text-center formheader'>Teacher Registration Form</h5><br>
-    <form target="_self" enctype="multipart/form-data" method="POST" action="{{ URL::to('createteacher')}}" class="animate__animated animate__backInDown">
+
+    <form target="_self" enctype="multipart/form-data" method="POST" action="{{ URL::to('createteacher')}}" class="animate__animated animate__zoomIn">
         @csrf
+        <h5 class='text-center formheader'>Teacher Registration Form</h5><br>
         <div class="form-group row">
             <label for="teaid" class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-10">

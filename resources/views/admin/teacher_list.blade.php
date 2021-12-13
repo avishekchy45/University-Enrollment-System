@@ -45,15 +45,15 @@
             @if($data->count())
             @foreach($data as $value)
             <tr>
-                <td>{{$loop->iteration}}</td>
-                <td>{{$value->teacher_id}}</td>
-                <td>{{$value->name}}</td>
-                <td>{{$value->email}}</td>
-                <td>{{$value->phone_num}}</td>
-                <td>{{$value->address}}</td>
+                <td class='animate__animated animate__fadeIn animate__slower'>{{$loop->iteration}}</td>
+                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->teacher_id}}</td>
+                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->name}}</td>
+                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->email}}</td>
+                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->phone_num}}</td>
+                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->address}}</td>
                 <td>
-                    <a href="{{ URL::to('update/'.$value->id)}}" class="btn btn-warning btn-sm">Update</a>&nbsp;
-                    <a href="" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal{{$value->id}}">Delete</a>
+                    <a href="{{ URL::to('update/'.$value->id)}}" class="btn btn-warning btn-sm animate__animated animate__fadeIn animate__fast">Update</a>&nbsp;
+                    <a href="" class="btn btn-danger btn-sm animate__animated animate__fadeIn animate__slower" data-toggle="modal" data-target="#myModal{{$value->id}}">Delete</a>
                     <!-- Button to Open the Modal -->
                     <!-- The Modal -->
                     <div class="modal" id="myModal{{$value->id}}">

@@ -13,13 +13,13 @@
         </a>
     </li>
     <li class='nav-item'>
-        <a href="addstudent" style="text-decoration: none">
-            <div class="sidebaropt">Students</div>
+        <a href="addadvisor" style="text-decoration: none">
+            <div class="sidebaropt">Advisors</div>
         </a>
     </li>
     <li class='nav-item'>
-        <a href="addadvisor" style="text-decoration: none">
-            <div class="sidebaropt">Advisors</div>
+        <a href="addstudent" style="text-decoration: none">
+            <div class="sidebaropt">Students</div>
         </a>
     </li>
     <li class='nav-item'>
