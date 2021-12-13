@@ -15,7 +15,7 @@
                         <strong>:</strong>
                     </td>
                     <td style="text-align: right; height: 35px; width: 256px;" colspan="2">
-                        <input name="username" type="text" id="txt_username" style="border-color:Blue;border-width:1px; border-style:Solid;font-family:Palatino Linotype;font-size:9pt;width:246px;">
+                        <input name="username" type="text" id="txt_username" style="border-color:Blue;border-width:1px; border-style:Solid;font-family:Palatino Linotype;font-size:9pt;width:246px;" required>
                     </td>
                     <td colspan="1" style="width: 31px; height: 35px; text-align: right"></td>
                 </tr>
@@ -27,7 +27,7 @@
                     </td>
                     </td>
                     <td style="text-align: right; width: 256px; height: 35px;" colspan="2">
-                        <input name="pass" type="password" id="txt_password" style="border-color:Blue;border-width:1px;border-style:Solid;font-family:Palatino Linotype;font-size:9pt;width:246px;">
+                        <input name="pass" type="password" id="txt_password" style="border-color:Blue;border-width:1px;border-style:Solid;font-family:Palatino Linotype;font-size:9pt;width:246px;" required>
                     </td>
                     <td colspan="1" style="width: 31px; height: 35px; text-align: right">
                     </td>

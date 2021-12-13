@@ -13,7 +13,7 @@
     <!-- <div class="d-block d-md-none">
         <span>Click here for more options</span>
     </div> -->
-    <button class='navbar-toggler' style="background-image: url(img/3.png);" type='button' data-toggle='collapse' data-target='#collapsibleNavbar'>
+    <button class='navbar-toggler' style="background-image: url(images/3.png);" type='button' data-toggle='collapse' data-target='#collapsibleNavbar'>
         <span class='navbar-toggler-icon'></span>
     </button>
     <div class='collapse navbar-collapse' style="text-align: center;" id='collapsibleNavbar'>
@@ -29,8 +29,6 @@
 </div>
 <br>
 <div class="mainpage">
-    <p style="text-align: right;">Welcome</p>
-    Avishek Chowdhury
 
 </div>
 @endsection

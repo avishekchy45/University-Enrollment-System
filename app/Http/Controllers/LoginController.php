@@ -14,11 +14,16 @@ class LoginController extends Controller
     }
     public function logout()
     {
-        session()->forget('username');
+        // session()->forget('username');
+        session()->flush();
         return redirect('/')->with('successmsg', 'You have been successfully Logged Out.');
     }
     public function loginvalidation(request $req)
     {
+        $req->validate([
+            'username' => 'required',
+            'pass' => 'required',
+        ]);
         $username = $req->username;
         $pass = $req->pass;
         // $pass = Hash::make($pass);

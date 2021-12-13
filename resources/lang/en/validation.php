@@ -153,6 +153,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'teaid' => 'Teacher ID',
+    ],
 
 ];
