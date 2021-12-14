@@ -1,15 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdvisorController;
 use App\Http\Controllers\CourseController;
+
 use Illuminate\Http\Request;
+
 use App\Models\Teacher;
 use App\Models\Student;
 use App\Models\Admin;
+use App\Models\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +64,11 @@ Route::group(['middleware' => 'checkloggedin'], function () {
             return view('admin.course_list');
         });*/
         Route::get('/enrollmentlist', function () {
-            return view('admin.enrollment_list');
+            $data = Session::orderBy('created_at', 'DESC')->get();
+            return view('admin.enrollment_list', compact('data'));
         });
+        Route::post('/createsession', [SessionController::class, 'createsession']);
+        Route::post('/updatesession/{id}', [SessionController::class, 'updatesession']);
         Route::get('/overlaplist', function () {
             return view('admin.overlap_list');
         });
