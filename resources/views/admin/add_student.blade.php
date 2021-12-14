@@ -51,7 +51,7 @@
                     @else
                     <option value="{{$adv->batch}}"> {{$adv->batch}}</option>
                     @endif
-                    @endforeachff
+                    @endforeach
                 </select>
                 @if ($errors->has('batch'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('batch') }} </div>
