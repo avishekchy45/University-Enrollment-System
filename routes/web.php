@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdvisorController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\Student;
@@ -48,12 +49,15 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/addadvisor', [AdvisorController::class, 'advisorfrom']);
         Route::post('/createadvisor', [AdvisorController::class, 'createadvisor']);
         Route::get('/advisorlist', [AdvisorController::class, 'advisorlist']);
-        Route::get('/addcourse', function () {
+        Route::get('/addcourse', [CourseController::class, 'coursefrom']);
+        Route::post('/createcourse', [CourseController::class, 'createcourse']);
+        Route::get('/courselist', [CourseController::class, 'courselist']);
+        /*Route::get('/addcourse', function () {
             return view('admin.add_course');
         });
         Route::get('/courselist', function () {
             return view('admin.course_list');
-        });
+        });*/
         Route::get('/enrollmentlist', function () {
             return view('admin.enrollment_list');
         });
