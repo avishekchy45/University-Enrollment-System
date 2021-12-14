@@ -29,7 +29,7 @@
 <br>
 <div class="mainpage">
     <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
-        List of all Teachers ( {{$data->count()}} Entries)
+        List of all Teachers ({{$data->count()}} Entries)
     </span>
     <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
         <thead class="tableheader">

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class AdvisorController extends Controller
 {
-    public function advisorfrom(request $request)
+    public function addadvisor(request $request)
     {
         $advisor = DB::table('teachers')
             ->select('teacher_id')
@@ -19,8 +19,8 @@ class AdvisorController extends Controller
     public function createadvisor(request $req)
     {
         $req->validate([
-            'teaid' => 'required',
-            'batch' => 'required|integer',
+            'teaid' => 'required|exists:teachers,teacher_id',
+            'batch' => 'required|integer|unique:advisors,batch',
         ]);
         
         $obj2 = new Advisor();

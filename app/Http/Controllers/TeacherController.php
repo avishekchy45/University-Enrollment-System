@@ -11,9 +11,9 @@ class TeacherController extends Controller
     public function createteacher(request $req)
     {
         $req->validate([
-            'teaid' => 'required|unique:user_accounts,username',
+            'teaid' => 'required|unique:user_accounts,username|min:4|max:13',
             'name' => 'required',
-            'email' => 'required|unique:teachers,email',
+            'email' => 'email|unique:teachers,email',
         ]);
         $obj1 = new UserAccount();
         $obj2 = new Teacher();
