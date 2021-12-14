@@ -43,19 +43,19 @@
         <div class="form-group row">
             <label for="batch" class="col-sm-2 col-form-label">Batch</label>
             <div class="col-sm-10">
-                <select type="text" class="form-control" id="batch" name="batch" value="{{ old('batch') }}">
-                    <option value="">Please Select</option>
+                <select type="number" class="form-control" id="batch" name="batch" value="{{ old('batch') }}" required>
+                    <option value="" disabled selected>Please Select</option>
                     @foreach($advisor as $adv)
                     @if (old('batch')==$adv->batch)
                     <option value={{$adv->batch}} selected>{{$adv->batch }}</option>
                     @else
                     <option value="{{$adv->batch}}"> {{$adv->batch}}</option>
                     @endif
-                    @endforeach
-                    @if ($errors->has('batch'))
-                    <div class="form-text alert alert-danger"> {{ $errors->first('batch') }} </div>
-                    @endif
+                    @endforeachff
                 </select>
+                @if ($errors->has('batch'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('batch') }} </div>
+                @endif
             </div>
         </div>
         <div class="form-group row">

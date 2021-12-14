@@ -21,8 +21,10 @@ class StudentController extends Controller
     {
         $req->validate([
             'stid' => 'required|unique:user_accounts,username',
+            'batch' => 'required',
             'name' => 'required',
             'email' => 'required|unique:students,email',
+            
         ]);
         $obj1 = new UserAccount();
         $obj2 = new Student();
