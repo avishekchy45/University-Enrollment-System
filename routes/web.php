@@ -51,10 +51,10 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/addstudent', [StudentController::class, 'studentfrom']);
         Route::post('/createstudent', [StudentController::class, 'createstudent']);
         Route::get('/studentlist', [StudentController::class, 'studentlist']);
-        Route::get('/addadvisor', [AdvisorController::class, 'advisorfrom']);
+        Route::get('/addadvisor', [AdvisorController::class, 'addadvisor']);
         Route::post('/createadvisor', [AdvisorController::class, 'createadvisor']);
         Route::get('/advisorlist', [AdvisorController::class, 'advisorlist']);
-        Route::get('/addcourse', [CourseController::class, 'coursefrom']);
+        Route::get('/addcourse', [CourseController::class, 'addcourse']);
         Route::post('/createcourse', [CourseController::class, 'createcourse']);
         Route::get('/courselist', [CourseController::class, 'courselist']);
         /*Route::get('/addcourse', function () {

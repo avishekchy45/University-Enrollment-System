@@ -28,13 +28,13 @@
 </div>
 <br>
 <div class="mainpage">
-<form target="_self" enctype="multipart/form-data" method="POST" action="{{ URL::to('createcourse')}}" class="animate__animated animate__zoomIn">
+    <form target="_self" enctype="multipart/form-data" method="POST" action="{{ URL::to('createcourse')}}" class="animate__animated animate__zoomIn">
         @csrf
         <h5 class='text-center formheader'>Course Add Form</h5><br>
         <div class="form-group row">
             <label for="code" class="col-sm-2 col-form-label">Course Code</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="code" name="code" value="{{ old('code') }}" placeholder="Example:CSE312" required>
+                <input type="text" class="form-control" id="code" name="code" value="{{ old('code') }}" placeholder="Example: CSE312" required>
                 @if ($errors->has('teaid'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('code') }} </div>
                 @endif
@@ -52,7 +52,11 @@
         <div class="form-group row">
             <label for="type" class="col-sm-2 col-form-label">Course Type</label>
             <div class="col-sm-10">
-                <input type="type" class="form-control" id="type" name="type" value="{{ old('type') }}" required>
+                <select type="text" class="form-control" id="type" name="type" value="{{ old('type') }}">
+                    <option value="" disabled selected> Select Type</option>
+                    <option value="Theory"> Theory </option>
+                    <option value="Laboratory"> Laboratory</option>
+                </select>
                 @if ($errors->has('type'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('type') }} </div>
                 @endif
@@ -71,15 +75,15 @@
             <label for="department" class="col-sm-2 col-form-label">Department</label>
             <div class="col-sm-10">
                 <select type="text" class="form-control" id="department" name="department" value="{{ old('department') }}">
-                <option value="" disabled selected> SELECT Department</option>
+                    <option value="" disabled selected> Select Department</option>
                     @foreach($department as $d)
                     @if (old('department')==$d->id)
                     <option value={{$d->id}} selected>{{$d->fullfrom }}</option>
                     @else
                     <option value="{{$d->id}}"> {{$d->fullfrom}}</option>
                     @endif
-                    @endforeach 
-            </select>
+                    @endforeach
+                </select>
                 @if ($errors->has('department'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('department') }} </div>
                 @endif
@@ -89,14 +93,14 @@
             <label for="semester" class="col-sm-2 col-form-label">Semester</label>
             <div class="col-sm-10">
                 <select type="text" class="form-control" id="semester" name="semester" value="{{ old('semester') }}">
-                <option value="" disabled selected> SELECT Semester</option>
-                @foreach($semester as $s)
+                    <option value="" disabled selected> Select Semester</option>
+                    @foreach($semester as $s)
                     @if (old('semester')==$s->id)
                     <option value={{$s->id}} selected>{{$s->semester_no }}</option>
                     @else
                     <option value="{{$s->id}}"> {{$s->semester_no}}</option>
                     @endif
-                    @endforeach 
+                    @endforeach
                 </select>
                 @if ($errors->has('semester'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('semester') }} </div>

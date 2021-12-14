@@ -155,6 +155,7 @@ return [
 
     'attributes' => [
         'teaid' => 'Teacher ID',
+        'stuid' => 'Student ID',
     ],
 
 ];

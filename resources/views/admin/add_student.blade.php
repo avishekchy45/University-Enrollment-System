@@ -34,9 +34,9 @@
         <div class="form-group row">
             <label for="stid" class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="stid" name="stid" value="{{ old('stid') }}" required>
-                @if ($errors->has('stid'))
-                <div class="form-text alert alert-danger"> {{ $errors->first('stid') }} </div>
+                <input type="text" class="form-control" id="stuid" name="stuid" value="{{ old('stuid') }}" required>
+                @if ($errors->has('stuid'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('stuid') }} </div>
                 @endif
             </div>
         </div>

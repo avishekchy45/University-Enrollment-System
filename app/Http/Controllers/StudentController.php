@@ -20,17 +20,17 @@ class StudentController extends Controller
     public function createstudent(request $req)
     {
         $req->validate([
-            'stid' => 'required|unique:user_accounts,username',
-            'batch' => 'required',
+            'stuid' => 'required|unique:user_accounts,username|min:4|max:13',
+            'batch' => 'required|integer|exists:advisors,batch',
             'name' => 'required',
-            'email' => 'required|unique:students,email',
+            'email' => 'email|unique:students,email',
             
         ]);
         $obj1 = new UserAccount();
         $obj2 = new Student();
-        $obj1->username = $req->stid;
+        $obj1->username = $req->stuid;
         $obj1->role = 'student';
-        $obj2->student_id = $req->stid;
+        $obj2->student_id = $req->stuid;
         $obj2->name = $req->name;
         $obj2->email = $req->email;
         $obj2->phone_num = $req->phone;
