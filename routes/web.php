@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AdvisorController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\Student;
@@ -40,24 +43,21 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         });
         Route::post('/createteacher', [TeacherController::class, 'createteacher']);
         Route::get('/teacherlist', [TeacherController::class, 'teacherlist']);
-        Route::get('/addstudent', function () {
-            return view('admin.add_student');
-        });
-        Route::get('/studentlist', function () {
-            return view('admin.student_list');
-        });
-        Route::get('/addadvisor', function () {
-            return view('admin.add_advisor');
-        });
-        Route::get('/advisorlist', function () {
-            return view('admin.advisor_list');
-        });
-        Route::get('/addcourse', function () {
+        Route::get('/addstudent', [StudentController::class, 'studentfrom']);
+        Route::post('/createstudent', [StudentController::class, 'createstudent']);
+        Route::get('/studentlist', [StudentController::class, 'studentlist']);
+        Route::get('/addadvisor', [AdvisorController::class, 'advisorfrom']);
+        Route::post('/createadvisor', [AdvisorController::class, 'createadvisor']);
+        Route::get('/advisorlist', [AdvisorController::class, 'advisorlist']);
+        Route::get('/addcourse', [CourseController::class, 'coursefrom']);
+        Route::post('/createcourse', [CourseController::class, 'createcourse']);
+        Route::get('/courselist', [CourseController::class, 'courselist']);
+        /*Route::get('/addcourse', function () {
             return view('admin.add_course');
         });
         Route::get('/courselist', function () {
             return view('admin.course_list');
-        });
+        });*/
         Route::get('/enrollmentlist', function () {
             return view('admin.enrollment_list');
         });

@@ -28,6 +28,42 @@
 </div>
 <br>
 <div class="mainpage">
-
+<form target="_self" enctype="multipart/form-data" method="POST" action="{{ URL::to('createadvisor')}}" class="animate__animated animate__zoomIn">
+        @csrf
+        <h5 class='text-center formheader'>Advisor Registration Form</h5><br>
+        <div class="form-group row">
+            <label for="teaid" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-10">
+                <select type="text" class="form-control" id="teaid" name="teaid" value="{{ old('teaid') }}" required>
+                <option value="" disabled selected>Please Select</option>
+                    @foreach($advisor as $adv)
+                    @if (old('teaid')==$adv->teacher_id)
+                    <option value={{$adv->teacher_id}} selected>{{$adv->teacher_id }}</option>
+                    @else
+                    <option value="{{$adv->teacher_id}}"> {{$adv->teacher_id}}</option>
+                    @endif
+                    @endforeach
+                </select>
+                @if ($errors->has('teaid'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('teaid') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="batch" class="col-sm-2 col-form-label">Batch</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="batch" name="batch" value="{{ old('batch') }}" required>
+                @if ($errors->has('batch'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('batch') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row text-center">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-outline-info">ADD ADVISOR</button>
+            </div>
+        </div>
+    </form>
+    <br>
 </div>
 @endsection
