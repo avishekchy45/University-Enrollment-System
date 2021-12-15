@@ -34,7 +34,7 @@
     <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
         <thead class="tableheader">
             <th>No.</th>
-            <th>Username</th>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone Number</th>
@@ -68,7 +68,7 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    Are you sure you want to Delete {{$value->name}}?
+                                    Are you sure you want to Delete {{$value->student_id}}?
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">

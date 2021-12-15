@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserAccount;
 use App\Models\Student;
-use Illuminate\Support\Facades\DB;
+use App\Models\Advisor;
+
 
 class StudentController extends Controller
 {
-    public function studentfrom(request $request)
+    public function addstudent(request $request)
     {
-        $advisor = DB::table('advisors')
-            ->select('batch')
-            ->get();
+        $advisor = Advisor::select('batch')->get();
         //dd($advisor);
         return view('admin.add_student', compact('advisor'));
     }
