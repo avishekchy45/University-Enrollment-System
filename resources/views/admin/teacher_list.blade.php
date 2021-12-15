@@ -66,7 +66,7 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    Are you sure you want to Delete {{$value->name}}?
+                                    Are you sure you want to Delete {{$value->teacher_id}}?
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
