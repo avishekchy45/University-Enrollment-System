@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Advisor;
-use Illuminate\Support\Facades\DB;
+use App\Models\Teacher;
+
 
 class AdvisorController extends Controller
 {
     public function addadvisor(request $request)
     {
-        $advisor = DB::table('teachers')
-            ->select('teacher_id')
-            ->get();
+        $advisor = Teacher::select('teacher_id')->get();
         //dd($advisor);
         return view('admin.add_advisor', compact('advisor'));
     }

@@ -4,19 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
-use Illuminate\Support\Facades\DB;
+use App\Models\Department;
+use App\Models\Semester;
 
 class CourseController extends Controller
 {
     public function addcourse(request $request)
     {
-        $department = DB::table('departments')
-            ->select('id', 'fullfrom')
-            ->get();
-        $semester = DB::table('semesters')
-            ->select('id', 'semester_no')
-            ->get();
-        //dd($advisor);
+        $department = Department::select('id', 'fullfrom')->get();
+        $semester = Semester::select('id', 'semester_no')->get();
+        return view('admin.add_course', compact('department', 'semester'));
         return view('admin.add_course', compact('department', 'semester'));
     }
     public function createcourse(request $req)
@@ -45,15 +42,10 @@ class CourseController extends Controller
     }
     public function Courselist()
     {
-        /*$data = Course::all();
-        return view('admin.course_list', compact('data'));*/
-        // dd($data);
-        $data = DB::table('courses as c')
-            ->leftJoin('departments as d', 'c.department_id', 'd.id')
-            ->leftJoin('semesters as s', 'c.semester_id', 's.id')
-            ->select('c.id', 'c.title', 'c.code', 'c.type', 'c.credit', 'd.fullfrom as department', 's.semester_no as semester')
+        $data = Course::leftJoin('departments as d', 'department_id', 'd.id')
+            ->leftJoin('semesters as s', 'semester_id', 's.id')
+            ->select('title', 'code', 'type', 'credit', 'd.fullfrom as department', 's.semester_no as semester')
             ->get();
-
         return view('admin.course_list', compact('data'));
     }
 }

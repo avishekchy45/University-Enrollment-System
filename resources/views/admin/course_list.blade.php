@@ -39,7 +39,7 @@
             <th> Type</th>
             <th>Credit</th>
             <th>Department</th>
-            <th>semester</th>
+            <th>Semester</th>
             <th>Action</th>
         </thead>
         <tbody class="table-bordered">
