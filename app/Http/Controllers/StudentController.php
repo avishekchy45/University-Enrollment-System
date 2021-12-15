@@ -10,7 +10,7 @@ use App\Models\Advisor;
 
 class StudentController extends Controller
 {
-    public function studentfrom(request $request)
+    public function addstudent(request $request)
     {
         $advisor = Advisor::select('batch')->get();
         //dd($advisor);

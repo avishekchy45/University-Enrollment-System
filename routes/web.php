@@ -48,7 +48,7 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         });
         Route::post('/createteacher', [TeacherController::class, 'createteacher']);
         Route::get('/teacherlist', [TeacherController::class, 'teacherlist']);
-        Route::get('/addstudent', [StudentController::class, 'studentfrom']);
+        Route::get('/addstudent', [StudentController::class, 'addstudent']);
         Route::post('/createstudent', [StudentController::class, 'createstudent']);
         Route::get('/studentlist', [StudentController::class, 'studentlist']);
         Route::get('/addadvisor', [AdvisorController::class, 'addadvisor']);
