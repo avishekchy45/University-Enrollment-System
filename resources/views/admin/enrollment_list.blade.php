@@ -77,7 +77,7 @@
             @endforeach
             @else
             <tr class="text-center">
-                <td colspan="9">No Session Found</td>
+                <td colspan="9" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Session Found</td>
             </tr>
             @endif
         </tbody>

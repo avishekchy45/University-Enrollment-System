@@ -16,7 +16,7 @@
                             <tr>
                                 <td style="height: 25px;text-align:left;">
                                     &nbsp;
-                                    <a href="/" class="btn menu">Home</a>
+                                    <a href="/{{session('userrole')}}" class="btn menuoption">Home</a>
                                 </td>
                                 <td style="height: 25px; text-align:right;">
                                     <a href="/logout" class="btn signoutbtn">Signout</a>

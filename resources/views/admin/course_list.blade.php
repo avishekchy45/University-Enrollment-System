@@ -28,15 +28,15 @@
 </div>
 <br>
 <div class="mainpage">
-    <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
+    <!-- <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
         List of all Courses({{$data->count()}} Entries)
-    </span>
-    <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
+    </span> -->
+    <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='courselist'>
         <thead class="tableheader">
             <th>No.</th>
-            <th> Title</th>
-            <th> Code</th>
-            <th> Type</th>
+            <th>Title</th>
+            <th>Code</th>
+            <th>Type</th>
             <th>Credit</th>
             <th>Department</th>
             <th>Semester</th>
@@ -83,10 +83,42 @@
             @endforeach
             @else
             <tr class="text-center">
-                <td colspan="9">No Course Found</td>
+                <td colspan="8" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Course Found</td>
             </tr>
             @endif
         </tbody>
     </table>
+    <script>
+        $(document).ready(function() {
+            $('#courselist').DataTable();
+        });
+        $('#courselist').dataTable({
+            "pagingType": "full_numbers",
+            language: {
+                paginate: {
+                    first: '«',
+                    previous: '‹',
+                    next: '›',
+                    last: '»'
+                },
+                aria: {
+                    paginate: {
+                        first: 'First',
+                        previous: 'Previous',
+                        next: 'Next',
+                        last: 'Last'
+                    }
+                },
+                "lengthMenu": "Show _MENU_ Entries<br><br>List of all Courses ({{$data->count()}} Entries)",
+                // "info": "",
+            },
+            "order": [],
+            "lengthMenu": [5, 10, 20, 50, 100],
+            columnDefs: [{
+                orderable: false,
+                targets: [0, 7]
+            }],
+        });
+    </script>
 </div>
 @endsection
