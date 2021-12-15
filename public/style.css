@@ -50,7 +50,7 @@ body {
 .buttonstyle2:hover {
     color: Maroon;
 }
-.menu {
+.menuoption {
     background-color: #003333;
     cursor: pointer;
     /* height: 25px;
@@ -64,7 +64,7 @@ body {
     border-bottom-style: none; */
     border-radius: 0px 0px 0px 0px;
 }
-.menu:hover {
+.menuoption:hover {
     background-color: #00c0c0;
 }
 .signoutbtn {
@@ -212,9 +212,12 @@ input:checked + .slider:before {
 
 @media only screen and (min-width: 600px) {
     .mainpage {
-        /* margin-left: 1rem !important; */
+        margin-left: 1rem !important;
         margin-right: 1rem !important;
     }
+    /* .listcaption{
+        margin-left: -1rem !important;
+    } */
 }
 @media only screen and (max-width: 600px) {
     .mainopt {

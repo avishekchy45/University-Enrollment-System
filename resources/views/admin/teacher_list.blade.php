@@ -28,10 +28,10 @@
 </div>
 <br>
 <div class="mainpage">
-    <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
+    <!-- <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt" class="listcaption">
         List of all Teachers ({{$data->count()}} Entries)
-    </span>
-    <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
+    </span><br><br> -->
+    <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='teacherlist'>
         <thead class="tableheader">
             <th>No.</th>
             <th>Username</th>
@@ -81,11 +81,42 @@
             @endforeach
             @else
             <tr class="text-center">
-                <td colspan="9">No Teacher Found</td>
+                <td colspan="7" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Teacher Found</td>
             </tr>
             @endif
         </tbody>
     </table>
-
+    <script>
+        $(document).ready(function() {
+            $('#teacherlist').DataTable();
+        });
+        $('#teacherlist').dataTable({
+            "pagingType": "full_numbers",
+            language: {
+                paginate: {
+                    first: '«',
+                    previous: '‹',
+                    next: '›',
+                    last: '»'
+                },
+                aria: {
+                    paginate: {
+                        first: 'First',
+                        previous: 'Previous',
+                        next: 'Next',
+                        last: 'Last'
+                    }
+                },
+                "lengthMenu": "Show _MENU_ Entries<br><br>List of all Teachers ({{$data->count()}} Entries)",
+                // "info": "",
+            },
+            "order": [],
+            "lengthMenu": [5, 10, 20, 50, 100],
+            columnDefs: [{
+                orderable: false,
+                targets: [0, 4, 5, 6]
+            }],
+        });
+    </script>
 </div>
 @endsection

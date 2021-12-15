@@ -28,10 +28,10 @@
 </div>
 <br>
 <div class="mainpage">
-<span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
+    <!-- <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
         List of all Advisors ({{$data->count()}} Entries)
-    </span>
-    <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
+    </span> -->
+    <table class='compact table table-sm table-striped table-hover table-responsive-sm text-center list' id='advisorlist'>
         <thead class="tableheader">
             <th>No.</th>
             <th>ID</th>
@@ -75,10 +75,42 @@
             @endforeach
             @else
             <tr class="text-center">
-                <td colspan="9">No Advisor Found</td>
+                <td colspan="4" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Advisor Found</td>
             </tr>
             @endif
         </tbody>
     </table>
+    <script>
+        $(document).ready(function() {
+            $('#advisorlist').DataTable();
+        });
+        $('#advisorlist').dataTable({
+            "pagingType": "full_numbers",
+            language: {
+                paginate: {
+                    first: '«',
+                    previous: '‹',
+                    next: '›',
+                    last: '»'
+                },
+                aria: {
+                    paginate: {
+                        first: 'First',
+                        previous: 'Previous',
+                        next: 'Next',
+                        last: 'Last'
+                    }
+                },
+                "lengthMenu": "Show _MENU_ Entries<br><br>List of all Advisors ({{$data->count()}} Entries)",
+                // "info": "",
+            },
+            "order": [],
+            "lengthMenu": [5, 10, 20, 50, 100],
+            columnDefs: [{
+                orderable: false,
+                targets: [0, 3]
+            }],
+        });
+    </script>
 </div>
 @endsection
