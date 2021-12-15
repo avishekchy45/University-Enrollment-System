@@ -70,7 +70,7 @@
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" >
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
                 @if ($errors->has('email'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('email') }} </div>
                 @endif
