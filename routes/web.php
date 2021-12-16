@@ -8,7 +8,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdvisorController;
 use App\Http\Controllers\CourseController;
-
+use App\Http\Controllers\EnrollcourseController;
 use Illuminate\Http\Request;
 
 use App\Models\Teacher;
@@ -98,11 +98,8 @@ Route::group(['middleware' => 'checkloggedin'], function () {
             // $req->session()->put('photo', $user->photo);
             return view('student.profile');
         });
-        Route::get('/enrollcourse', function () {
-            return view('student.enroll_course');
-        });
-        Route::get('/checkrequests', function () {
-            return view('student.check_requests');
-        });
+        Route::get('/enrollcourse', [EnrollcourseController::class, 'enrollcourse']);
+        Route::post('/enrollment', [EnrollcourseController::class, 'store']);
+        Route::get('/checkrequests', [EnrollcourseController::class, 'checkrequest']);
     });
 });
