@@ -8,6 +8,10 @@ use App\Models\Teacher;
 
 class TeacherController extends Controller
 {
+    public function addteacher()
+    {
+        return view('admin.add_teacher');
+    }
     public function createteacher(request $req)
     {
         $req->validate([

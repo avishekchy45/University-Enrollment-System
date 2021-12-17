@@ -39,13 +39,13 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         // Admin Pages
         Route::get('/admin', function () {
             $user = Admin::where('admin_id', '=', session('username'))->first();
-            session()->put('name', $user->name);
-            // $req->session()->put('photo', $user->photo);
+            if ($user) {
+                session()->put('name', $user->name);
+                // $req->session()->put('photo', $user->photo);
+            }
             return view('admin.profile');
         });
-        Route::get('/addteacher', function () {
-            return view('admin.add_teacher');
-        });
+        Route::get('/addteacher', [TeacherController::class, 'addteacher']);
         Route::post('/createteacher', [TeacherController::class, 'createteacher']);
         Route::get('/teacherlist', [TeacherController::class, 'teacherlist']);
         Route::get('/addstudent', [StudentController::class, 'addstudent']);
@@ -78,8 +78,10 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         // Teacher Pages
         Route::get('/teacher', function () {
             $user = Teacher::where('teacher_id', '=', session('username'))->first();
-            session()->put('name', $user->name);
-            // $req->session()->put('photo', $user->photo);
+            if ($user) {
+                session()->put('name', $user->name);
+                // $req->session()->put('photo', $user->photo);
+            }
             return view('teacher.profile');
         });
         Route::get('/enrollstudent', function () {
@@ -94,8 +96,10 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         // Student Pages
         Route::get('/student', function () {
             $user = Student::where('student_id', '=', session('username'))->first();
-            session()->put('name', $user->name);
-            // $req->session()->put('photo', $user->photo);
+            if ($user) {
+                session()->put('name', $user->name);
+                // $req->session()->put('photo', $user->photo);
+            }
             return view('student.profile');
         });
         Route::get('/enrollcourse', function () {
