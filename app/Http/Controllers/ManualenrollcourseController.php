@@ -66,15 +66,26 @@ class ManualenrollcourseController extends Controller
     }
     public function checkrequest()
     {
+       
+        $data3=Advisor::select('batch')->where('teacher_id', '=',  session('username'))->get();
+        foreach($data3 as $value)
+        $data2=Student::select('student_id')->where('batch', '=', $value->batch)->get();
+        //dd($data2);
+        //$d=array_sum($data2);
+        //for($i=0;$i<=$d;$i++)
+        foreach($data2 as $value1)
+     // dd(($key));
         $data = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
-            ->select('c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type')
-            ->where('student_id', '=', session('username'))
+            ->select('c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type','enrollments.student_id')
+            ->where('student_id', '=',$value1->student_id)
             ->get();
+          //dd($data);
         $data1 = Course::leftJoin('semesters as s', 'semester_id', 's.id')
             ->leftJoin('enrollments as e', 'courses.id', 'e.course_id')
-            ->select('s.semester_no as semester', 's.id as id')->where('student_id', '=', session('username'))
+            ->select('s.semester_no as semester', 's.id as id')->where('student_id', '=', $value1->student_id)
             ->get();
-        //dd($data1);
-        return view('student.check_requests', compact('data', 'data1'));
+           // dd($data1);
+        return view('teacher.update_requests', compact('data', 'data1'));
+       
     }
 }

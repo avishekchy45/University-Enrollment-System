@@ -85,12 +85,13 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         });
         Route::get('/enrollstudent', [ManualenrollcourseController::class, 'enrollcourse']);
         Route::post('/manualenrollment', [ManualenrollcourseController::class, 'store']);
+        Route::get('/updaterequests', [ManualenrollcourseController::class, 'checkrequest']);
         // Route::get('/enrollstudent', function () {
         //     return view('teacher.enroll_student');
         // });
-        Route::get('/updaterequests', function () {
-            return view('teacher.update_requests');
-        });
+        // Route::get('/updaterequests', function () {
+        //     return view('teacher.update_requests');
+        // });
     });
 
     Route::group(['middleware' => 'isstudent'], function () {
