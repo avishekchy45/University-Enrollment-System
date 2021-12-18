@@ -26,7 +26,12 @@ class SessionController extends Controller
     {
         $status = $req->status;
         Session::where('id', $id)->update(['status' => $status]);
-        echo "Staus Updated";
+        if ($status == 1) {
+            $statuschange = "Running";
+        } else if ($status == 0) {
+            $statuschange = "Closed";
+        }
+        echo "Status Updated to $statuschange";
         // return back()->with('successmsg', 'Session Successfully Updated');
     }
 }

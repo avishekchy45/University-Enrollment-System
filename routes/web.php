@@ -73,6 +73,9 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/overlaplist', function () {
             return view('admin.overlap_list');
         });
+        Route::get('/courselimit', function () {
+            return view('admin.courselimitation');
+        });
     });
 
     Route::group(['middleware' => 'isteacher'], function () {
