@@ -8,7 +8,8 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdvisorController;
 use App\Http\Controllers\CourseController;
-
+use App\Http\Controllers\EnrollcourseController;
+use App\Http\Controllers\ManualenrollcourseController;
 use Illuminate\Http\Request;
 
 use App\Models\Teacher;
@@ -84,12 +85,15 @@ Route::group(['middleware' => 'checkloggedin'], function () {
             }
             return view('teacher.profile');
         });
-        Route::get('/enrollstudent', function () {
-            return view('teacher.enroll_student');
-        });
-        Route::get('/updaterequests', function () {
-            return view('teacher.update_requests');
-        });
+        Route::get('/enrollstudent', [ManualenrollcourseController::class, 'enrollcourse']);
+        Route::post('/manualenrollment', [ManualenrollcourseController::class, 'store']);
+        Route::get('/updaterequests', [ManualenrollcourseController::class, 'checkrequest']);
+        // Route::get('/enrollstudent', function () {
+        //     return view('teacher.enroll_student');
+        // });
+        // Route::get('/updaterequests', function () {
+        //     return view('teacher.update_requests');
+        // });
     });
 
     Route::group(['middleware' => 'isstudent'], function () {
@@ -102,11 +106,8 @@ Route::group(['middleware' => 'checkloggedin'], function () {
             }
             return view('student.profile');
         });
-        Route::get('/enrollcourse', function () {
-            return view('student.enroll_course');
-        });
-        Route::get('/checkrequests', function () {
-            return view('student.check_requests');
-        });
+        Route::get('/enrollcourse', [EnrollcourseController::class, 'enrollcourse']);
+        Route::post('/enrollment', [EnrollcourseController::class, 'store']);
+        Route::get('/checkrequests', [EnrollcourseController::class, 'checkrequest']);
     });
 });
