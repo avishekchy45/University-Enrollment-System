@@ -7,12 +7,12 @@ use App\Models\Session;
 use App\Models\Course;
 use App\Models\Enrollment;
 
-class EnrollcourseController extends Controller
+class StudentEnrollment extends Controller
 {
     public function enrollcourse(request $request)
     {
         $data = Session::select('name')->where("status", "=", 1)->get();
-        //dd($data);
+        // dd($data);
         if ($request->has('session')) {
             $data2 = Course::leftJoin('departments as d', 'department_id', 'd.id')
                 ->leftJoin('semesters as s', 'semester_id', 's.id')
@@ -23,7 +23,7 @@ class EnrollcourseController extends Controller
         return view('student.enroll_course', compact('data'));
     }
 
-    public function store(request $req)
+    public function enrollmentfinal(request $req)
     {
         $totalcredit = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
             ->where('student_id', '=', session('username'))->sum('c.credit');
@@ -60,7 +60,7 @@ class EnrollcourseController extends Controller
             return back()->with('errormsg', 'Cannot Request');
     }
 
-    public function checkrequest()
+    public function checkrequests()
     {
         $data = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
             ->select('c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type')

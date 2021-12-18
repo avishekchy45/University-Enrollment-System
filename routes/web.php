@@ -4,18 +4,17 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdvisorController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\EnrollcourseController;
-use App\Http\Controllers\ManualenrollcourseController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\TeacherEnrollment;
+use App\Http\Controllers\StudentEnrollment;
+use App\Http\Controllers\AdminEnrollment;
 
 use App\Models\Teacher;
 use App\Models\Student;
 use App\Models\Admin;
-use App\Models\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,24 +57,11 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/addcourse', [CourseController::class, 'addcourse']);
         Route::post('/createcourse', [CourseController::class, 'createcourse']);
         Route::get('/courselist', [CourseController::class, 'courselist']);
-        /*Route::get('/addcourse', function () {
-            return view('admin.add_course');
-        });
-        Route::get('/courselist', function () {
-            return view('admin.course_list');
-        });*/
-        Route::get('/enrollmentlist', function () {
-            $data = Session::orderBy('created_at', 'DESC')->get();
-            return view('admin.enrollment_list', compact('data'));
-        });
+        Route::get('/sessionlist', [SessionController::class, 'sessionlist']);
         Route::post('/createsession', [SessionController::class, 'createsession']);
         Route::post('/updatesession/{id}', [SessionController::class, 'updatesession']);
-        Route::get('/overlaplist', function () {
-            return view('admin.overlap_list');
-        });
-        Route::get('/courselimit', function () {
-            return view('admin.courselimitation');
-        });
+        Route::get('/overlaplist', [AdminEnrollment::class, 'overlaplist']);
+        Route::get('/courselimit', [AdminEnrollment::class, 'courselimit']);
     });
 
     Route::group(['middleware' => 'isteacher'], function () {
@@ -88,15 +74,9 @@ Route::group(['middleware' => 'checkloggedin'], function () {
             }
             return view('teacher.profile');
         });
-        Route::get('/enrollstudent', [ManualenrollcourseController::class, 'enrollcourse']);
-        Route::post('/manualenrollment', [ManualenrollcourseController::class, 'store']);
-        Route::get('/updaterequests', [ManualenrollcourseController::class, 'checkrequest']);
-        // Route::get('/enrollstudent', function () {
-        //     return view('teacher.enroll_student');
-        // });
-        // Route::get('/updaterequests', function () {
-        //     return view('teacher.update_requests');
-        // });
+        Route::get('/enrollstudent', [TeacherEnrollment::class, 'enrollstudent']);
+        Route::post('/manualenroll', [TeacherEnrollment::class, 'manualenroll']);
+        Route::get('/updaterequests', [TeacherEnrollment::class, 'updaterequests']);
     });
 
     Route::group(['middleware' => 'isstudent'], function () {
@@ -109,8 +89,8 @@ Route::group(['middleware' => 'checkloggedin'], function () {
             }
             return view('student.profile');
         });
-        Route::get('/enrollcourse', [EnrollcourseController::class, 'enrollcourse']);
-        Route::post('/enrollment', [EnrollcourseController::class, 'store']);
-        Route::get('/checkrequests', [EnrollcourseController::class, 'checkrequest']);
+        Route::get('/enrollcourse', [StudentEnrollment::class, 'enrollcourse']);
+        Route::post('/enrollmentfinal', [StudentEnrollment::class, 'enrollmentfinal']);
+        Route::get('/checkrequests', [StudentEnrollment::class, 'checkrequests']);
     });
 });

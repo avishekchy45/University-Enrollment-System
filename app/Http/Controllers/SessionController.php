@@ -7,6 +7,11 @@ use App\Models\Session;
 
 class SessionController extends Controller
 {
+    public function sessionlist()
+    {
+        $data = Session::orderBy('created_at', 'DESC')->get();
+        return view('admin.session_list', compact('data'));
+    }
     public function createsession(request $req)
     {
         $req->validate([

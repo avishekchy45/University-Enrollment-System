@@ -17,6 +17,7 @@
                                 <td style="height: 25px;text-align:left;">
                                     &nbsp;
                                     <a href="/{{session('userrole')}}" class="btn menuoption">Home</a>
+                                    <a href="" class="btn menuoption">Edit Profile</a>
                                 </td>
                                 <td style="height: 25px; text-align:right;">
                                     <a href="/logout" class="btn signoutbtn">Signout</a>

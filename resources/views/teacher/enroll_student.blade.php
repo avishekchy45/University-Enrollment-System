@@ -32,7 +32,7 @@
     <form target="_self" enctype="multipart/form-data" method="get" id="form1" class="animate__animated animate__zoomIn">
         @csrf
         <div class="form-group row">
-            <label for="teaid" class="col-sm-2 col-form-label">Select Available Session </label>
+            <label for="teaid" class="col-sm-2 col-form-label"> Select Available Session </label>
             <div class="col-sm-10">
                 <select type="text" class="form-control" id="session" name="session" value="{{ old('session') }}" required>
                     <option value="" disabled selected>Select Session</option>
@@ -82,8 +82,11 @@
         @php($batch=$_GET['batch'])
     </div>
     <div>
-        <p>Session: {{$sessionname}} <br>Exam Type: Regula,Recourse,Retake <br>Batch:{{$batch}}</p>
+        <p class="text-right"><b>Session:</b> {{$sessionname}} </p>
+        <p class="text-right"><b>Exam Type:</b> Regular, Recourse </p>
+        <p class="text-right"><b>Batch:</b> {{$batch}} </p>
     </div>
+    <hr>
     <style>
         #form1 {
             display: none;
@@ -108,9 +111,9 @@
                 @endif
             </div>
             <div>
-        <input type="hidden" name="session1" class="session1" value="{{$sessionname}}">
-        <input type="hidden" name="batch1" class="session1" value="{{$batch}}">
-    </div>
+                <input type="hidden" name="session1" class="session1" value="{{$sessionname}}">
+                <input type="hidden" name="batch1" class="session1" value="{{$batch}}">
+            </div>
         </div>
         <div class="form-group row text-center">
             <div class="col-sm-10">
@@ -127,8 +130,12 @@
     @php($student_id=$_GET['stuid'])
 </div>
 <div>
-    <p>Session: {{$sessionname}}<br>Student ID: {{$student_id}} <br>Exam Type: Regula,Recourse,Retake <br>Batch:{{$batch}}</p>
+    <p class="text-right"><b>Session:</b> {{$sessionname}} </p>
+    <p class="text-right"><b>Student ID:</b> {{$student_id}} </p>
+    <p class="text-right"><b>Exam Type:</b> Regular, Recourse </p>
+    <p class="text-right"><b>Batch:</b> {{$batch}} </p>
 </div>
+<hr>
 <style>
     #form1 {
         display: none;
@@ -140,7 +147,7 @@
 </style>
 
 
-<form target="_self" enctype="multipart/form-data" method="post" id="form3" action="{{ URL::to('manualenrollment')}}" class="animate__animated animate__zoomIn">
+<form target="_self" enctype="multipart/form-data" method="post" id="form3" action="{{ URL::to('manualenroll')}}" class="animate__animated animate__zoomIn">
     @csrf
     <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
         List of all Courses({{$data->count()}} Entries)
