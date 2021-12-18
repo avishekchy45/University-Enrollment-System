@@ -20,6 +20,9 @@
             <li class='nav-item'>
                 <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='overlaplist'> Overlap List </a>
             </li>
+            <li class='nav-item'>
+                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='courselimit'> Course Limitations </a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -82,7 +85,6 @@
             @endif
         </tbody>
     </table>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
         var status;
 

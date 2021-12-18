@@ -31,6 +31,24 @@
 </div>
 <br>
 <div class="mainpage">
-
+    <form target="_self" enctype="multipart/form-data" method="POST" action="{{ URL::to('createsession')}}" class="animate__animated animate__zoomIn">
+        @csrf
+        <h5 class='text-center formheader'>Session Registration Form</h5><br>
+        <div class="form-group row">
+            <label for="teaid" class="col-sm-2 col-form-label">Session Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="session" name="session" value="{{ old('session') }}" required>
+                @if ($errors->has('session'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('session') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row text-center">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-outline-info">Create Session</button>
+            </div>
+        </div>
+    </form>
+    <br>
 </div>
 @endsection
