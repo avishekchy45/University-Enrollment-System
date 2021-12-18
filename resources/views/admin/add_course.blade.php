@@ -34,7 +34,7 @@
         <div class="form-group row">
             <label for="code" class="col-sm-2 col-form-label">Course Code</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="code" name="code" value="{{ old('code') }}" placeholder="Example: CSE312" required>
+                <input type="text" class="form-control" id="code" name="code" value="{{ old('code') }}" placeholder="Example: CSE 123" required>
                 @if ($errors->has('teaid'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('code') }} </div>
                 @endif

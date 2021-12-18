@@ -9,9 +9,9 @@ use App\Models\Enrollment;
 use App\Models\Advisor;
 use App\Models\Student;
 
-class ManualenrollcourseController extends Controller
+class TeacherEnrollment extends Controller
 {
-  public function enrollcourse(request $request)
+  public function enrollstudent(request $request)
     {
         
         $data = Session::select('name')->where("status", "=", 1)->get();
@@ -40,7 +40,7 @@ class ManualenrollcourseController extends Controller
 
         return view('teacher.enroll_student', compact('data', 'data1'));
     }
-    public function store(request $req)
+    public function manualenroll(request $req)
     {
         $course_id = $req->slectcourse;
         $examtype = $req->examtype;
@@ -64,7 +64,7 @@ class ManualenrollcourseController extends Controller
         else
             return back()->with('errormsg', 'Cannot Request');
     }
-    public function checkrequest()
+    public function updaterequests()
     {
        
         $data3=Advisor::select('batch')->where('teacher_id', '=',  session('username'))->get();

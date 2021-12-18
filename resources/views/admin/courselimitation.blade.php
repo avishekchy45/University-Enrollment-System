@@ -15,7 +15,7 @@
     <div class='collapse navbar-collapse' style="text-align: center;" id='collapsibleNavbar'>
         <ul class='navbar-nav'>
             <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='enrollmentlist'> Session List </a>
+                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='sessionlist'> Session List </a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='overlaplist'> Overlap List </a>
@@ -35,7 +35,25 @@
         @csrf
         <h5 class='text-center formheader'>Session Registration Form</h5><br>
         <div class="form-group row">
-            <label for="teaid" class="col-sm-2 col-form-label">Session Name</label>
+            <label for="teaid" class="col-sm-2 col-form-label">Maximum Student per Section</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="session" name="session" value="{{ old('session') }}" required>
+                @if ($errors->has('session'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('session') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="teaid" class="col-sm-2 col-form-label">Maximum Credit per Student</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="session" name="session" value="{{ old('session') }}" required>
+                @if ($errors->has('session'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('session') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="teaid" class="col-sm-2 col-form-label">Cost per Credit</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="session" name="session" value="{{ old('session') }}" required>
                 @if ($errors->has('session'))

@@ -35,13 +35,13 @@
     <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
         <thead class="tableheader">
             <th>No.</th>
-            <th> Title</th>
-            <th> Code</th>
+            <th>Title</th>
+            <th>Code</th>
             <th>Course Type</th>
             <th>Credit</th>
             <th>Semester</th>
             <th>Exam Type</th>
-            <th>status</th>
+            <th>Status</th>
         </thead>
         <tbody class="table-bordered">
             @if($data->count())
@@ -58,7 +58,7 @@
                 @endforeach
                 @else
             <tr class="text-center">
-                <td colspan="9">No Course Found</td>
+                <td colspan="8" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Course Found</td>
             </tr>
             @endif
         </tbody>

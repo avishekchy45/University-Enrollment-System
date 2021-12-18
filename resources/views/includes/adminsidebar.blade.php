@@ -28,7 +28,7 @@
         </a>
     </li>
     <li class='nav-item'>
-        <a href="enrollmentlist" style="text-decoration: none">
+        <a href="sessionlist" style="text-decoration: none">
             <div class="sidebaropt">Enrollment</div>
         </a>
     </li>

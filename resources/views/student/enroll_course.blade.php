@@ -70,7 +70,7 @@
         <p class="text-right"><b>Exam Type:</b> Regular, Recourse</p>
     </div>
     <hr>
-    <form target="_self" enctype="multipart/form-data" method="post" id="form2" action="{{ URL::to('enrollment')}}" class="animate__animated animate__zoomIn">
+    <form target="_self" enctype="multipart/form-data" method="post" id="form2" action="{{ URL::to('enrollmentfinal')}}" class="animate__animated animate__zoomIn">
         @csrf
         <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
             List of all Courses({{$data->count()}} Entries)
