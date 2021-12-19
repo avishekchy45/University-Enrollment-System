@@ -62,6 +62,7 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::post('/updatesession/{id}', [SessionController::class, 'updatesession']);
         Route::get('/overlaplist', [AdminEnrollment::class, 'overlaplist']);
         Route::get('/courselimit', [AdminEnrollment::class, 'courselimit']);
+        Route::post('/updatecourselimit', [AdminEnrollment::class, 'updatecourselimit']);
     });
 
     Route::group(['middleware' => 'isteacher'], function () {
