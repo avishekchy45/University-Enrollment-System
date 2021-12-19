@@ -38,7 +38,6 @@
         <div class="form-group row">
             <label for="teaid" class="col-sm-2 col-form-label">Maximum Student per Section</label>
             <div class="col-sm-10">
-                <input type="hidden" class="form-control" id="id" name="id" value="{{ $value->id }}">
                 <input type="number" class="form-control" id="maxstudent" name="maxstudent" value="{{ $value->max_student }}" required>
                 @if ($errors->has('maxstudent'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('maxstudent') }} </div>

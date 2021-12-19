@@ -25,14 +25,14 @@ class AdminEnrollment extends Controller
             'maxstudent' => 'required|integer',
             'costpercredit' => 'required|integer',
         ]);
-        $id = $req->id;
-        $maxcedit = $req->maxcredit;
-        $macstudent = $req->maxstudent;
+        $id =1;
+        $maxcredit = $req->maxcredit;
+        $maxstudent = $req->maxstudent;
         $costpercredit = $req->costpercredit;
         $data = CourseLimitation::where('id', $id)
             ->update([
-                'max_credit' => $maxcedit,
-                'max_student' => $macstudent,
+                'max_credit' => $maxcredit,
+                'max_student' => $maxstudent,
                 'cost_per_credit' => $costpercredit
             ]);
         return redirect()->back()->with('successmsg', 'Suuccessfully Updated Course Limitation');
