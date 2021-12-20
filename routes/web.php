@@ -63,6 +63,9 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/overlaplist', [AdminEnrollment::class, 'overlaplist']);
         Route::get('/courselimit', [AdminEnrollment::class, 'courselimit']);
         Route::post('/updatecourselimit', [AdminEnrollment::class, 'updatecourselimit']);
+        Route::get('/editteacher/{id}', [TeacherController::class, 'editteacher']);
+        Route::post('/updateteacher/{id}', [TeacherController::class, 'updateteacher']);
+        route::get('/deleteteacher/{teacher_id}',[TeacherController::class, 'deleteteacher']);
     });
 
     Route::group(['middleware' => 'isteacher'], function () {

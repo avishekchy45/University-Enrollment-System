@@ -41,4 +41,29 @@ class TeacherController extends Controller
         $data = Teacher::all();
         return view('admin.teacher_list', compact('data'));
     }
+    public function editteacher($id)
+    {
+        $data = Teacher::find($id);
+        return view('admin.update_teacher', compact('data'));
+    }
+    public function updateteacher(Request $req, $id)
+    {
+        $req->validate([
+            'name' => 'required',
+            'email' => 'email|required',
+        ]);
+        $obj = Teacher::find($id);
+        $obj->name = $req->name;
+        $obj->email = $req->email;
+        $obj->phone_num = $req->phone;
+        $obj->address = $req->address;
+        $obj->save();
+        return back()->with('successmsg', 'Teacher  Successfully Updated');
+    }
+    public function deleteteacher($id)
+    {
+        // UserAccount::find($id)->delete();
+        UserAccount::where('username','=',$id)->delete();
+        return redirect()->back()->with('successmsg', 'Deleted Successfully');
+    }
 }
