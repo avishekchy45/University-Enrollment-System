@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Teacher;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            UserAccountSeeder::class,
+            TeacherSeeder::class,
+            AdminSeeder::class,
+           AdvisorSeeder::class,
+           StudentSeeder::class,
+           DepartmentSeeder::class,
+           SemesterSeeder::class,
+           SessionSeeder::class,
+           CourseSeeder::class,
+           CourseLimitationSeeder::class,
+           EnrollmentSeeder::class,
+
+           
+
+           
+           
+        ]);
         // \App\Models\User::factory(10)->create();
     }
 }
