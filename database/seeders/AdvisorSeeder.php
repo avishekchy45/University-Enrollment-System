@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Advisor;
 use Illuminate\Database\Seeder;
 
@@ -30,9 +31,6 @@ class AdvisorSeeder extends Seeder
                     'teacher_id' => 'aniksen_cse',
                     'batch' => '12',
                 ],
-
-
-
             ]);
         } else {
             echo "\e[31mTable is not empty, therefore NOT ";
