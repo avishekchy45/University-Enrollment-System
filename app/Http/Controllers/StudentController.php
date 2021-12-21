@@ -48,4 +48,29 @@ class StudentController extends Controller
         $data = Student::all();
         return view('admin.student_list', compact('data'));
     }
+    public function editstudent($id)
+    {
+        $data = Student::find($id);
+        return view('admin.update_student', compact('data'));
+    }
+    public function updatestudent(Request $req, $id)
+    {
+        $req->validate([
+            'name' => 'required',
+            'email' => 'email|required',
+        ]);
+        $obj = Student::find($id);
+        $obj->name = $req->name;
+        $obj->email = $req->email;
+        $obj->phone_num = $req->phone;
+        $obj->address = $req->address;
+        $obj->save();
+        return back()->with('successmsg', 'Student Successfully Updated');
+    }
+    public function deletestudent($id)
+    {
+        // UserAccount::find($id)->delete();
+        UserAccount::where('username','=',$id)->delete();
+        return redirect()->back()->with('successmsg', 'Deleted Successfully');
+    }
 }

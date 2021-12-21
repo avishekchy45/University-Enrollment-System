@@ -67,6 +67,12 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/editteacher/{id}', [TeacherController::class, 'editteacher']);
         Route::post('/updateteacher/{id}', [TeacherController::class, 'updateteacher']);
         route::get('/deleteteacher/{teacher_id}',[TeacherController::class, 'deleteteacher']);
+        Route::get('/editstudent/{id}', [StudentController::class, 'editstudent']);
+        Route::post('/updatestudent/{id}', [StudentController::class, 'updatestudent']);
+        route::get('/deletestudent/{student_id}',[StudentController::class, 'deletestudent']);
+        Route::get('/editcourse/{id}', [CourseController::class, 'editcourse']);
+        Route::post('/updatecourse/{id}', [CourseController::class, 'updatecourse']);
+        route::get('/deletecourse/{student_id}',[CourseController::class, 'deletecourse']);
         route::get('admin/editprofile',[ProfileController::class, 'adminprofile']);
         route::post('/updateadminprofile',[ProfileController::class, 'updateadminprofile']);
     });
