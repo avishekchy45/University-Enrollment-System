@@ -66,15 +66,18 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::post('/updatecourselimit', [AdminEnrollment::class, 'updatecourselimit']);
         Route::get('/editteacher/{id}', [TeacherController::class, 'editteacher']);
         Route::post('/updateteacher/{id}', [TeacherController::class, 'updateteacher']);
-        route::get('/deleteteacher/{teacher_id}',[TeacherController::class, 'deleteteacher']);
+        Route::get('/deleteteacher/{teacher_id}', [TeacherController::class, 'deleteteacher']);
         Route::get('/editstudent/{id}', [StudentController::class, 'editstudent']);
         Route::post('/updatestudent/{id}', [StudentController::class, 'updatestudent']);
-        route::get('/deletestudent/{student_id}',[StudentController::class, 'deletestudent']);
+        Route::get('/deletestudent/{student_id}', [StudentController::class, 'deletestudent']);
         Route::get('/editcourse/{id}', [CourseController::class, 'editcourse']);
         Route::post('/updatecourse/{id}', [CourseController::class, 'updatecourse']);
-        route::get('/deletecourse/{student_id}',[CourseController::class, 'deletecourse']);
-        route::get('admin/editprofile',[ProfileController::class, 'adminprofile']);
-        route::post('/updateadminprofile',[ProfileController::class, 'updateadminprofile']);
+        Route::get('/deletecourse/{student_id}', [CourseController::class, 'deletecourse']);
+        Route::get('/editadvisor/{id}', [AdvisorController::class, 'editadvisor']);
+        Route::post('/updateadvisor/{id}', [AdvisorController::class, 'updateadvisor']);
+        Route::get('/deleteadvisor/{student_id}', [AdvisorController::class, 'deleteadvisor']);
+        Route::get('admin/editprofile', [ProfileController::class, 'adminprofile']);
+        Route::post('/updateadminprofile', [ProfileController::class, 'updateadminprofile']);
     });
 
     Route::group(['middleware' => 'isteacher'], function () {
@@ -90,8 +93,8 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/enrollstudent', [TeacherEnrollment::class, 'enrollstudent']);
         Route::post('/manualenroll', [TeacherEnrollment::class, 'manualenroll']);
         Route::get('/updaterequests', [TeacherEnrollment::class, 'updaterequests']);
-        route::get('teacher/editprofile',[ProfileController::class, 'teacherprofile']);
-        route::post('/updateteacherprofile',[ProfileController::class, 'updateteacherprofile']);
+        route::get('teacher/editprofile', [ProfileController::class, 'teacherprofile']);
+        route::post('/updateteacherprofile', [ProfileController::class, 'updateteacherprofile']);
         Route::get('/updaterequests/{id}', [TeacherEnrollment::class, 'updaterequestsfinal']);
     });
 
@@ -108,8 +111,8 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/enrollcourse', [StudentEnrollment::class, 'enrollcourse']);
         Route::post('/enrollmentfinal', [StudentEnrollment::class, 'enrollmentfinal']);
         Route::get('/checkrequests', [StudentEnrollment::class, 'checkrequests']);
-        route::get('student/editprofile',[ProfileController::class, 'studentprofile']);
-        route::post('/updatestudentprofile',[ProfileController::class, 'updatestudentprofile']);
-        route::get('/deletecourse/{id}',[StudentEnrollment::class, 'deletecourse']);
+        route::get('student/editprofile', [ProfileController::class, 'studentprofile']);
+        route::post('/updatestudentprofile', [ProfileController::class, 'updatestudentprofile']);
+        route::get('/deletecourse/{id}', [StudentEnrollment::class, 'deletecourse']);
     });
 });

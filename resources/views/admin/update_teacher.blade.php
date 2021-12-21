@@ -15,7 +15,7 @@
     <div class='collapse navbar-collapse' style="text-align: center;" id='collapsibleNavbar'>
         <ul class='navbar-nav'>
             <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href="{{ URL::to('addteacher')}}" > Add Teacher </a>
+                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href="{{ URL::to('addteacher')}}"> Add Teacher </a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href="{{ URL::to('teacherlist')}}"> Teachers List </a>
@@ -29,7 +29,7 @@
 <br>
 <div class="mainpage">
 
-    <form  enctype="multipart/form-data" method="POST" action="{{ URL::to('updateteacher/'.$data->id)}}" class="animate__animated animate__zoomIn">
+    <form enctype="multipart/form-data" method="POST" action="{{ URL::to('updateteacher/'.$data->id)}}" class="animate__animated animate__zoomIn">
         @csrf
         <h5 class='text-center formheader'>Update Teacher Form</h5><br>
         <div class="form-group row">
