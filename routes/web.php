@@ -81,6 +81,7 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/enrollstudent', [TeacherEnrollment::class, 'enrollstudent']);
         Route::post('/manualenroll', [TeacherEnrollment::class, 'manualenroll']);
         Route::get('/updaterequests', [TeacherEnrollment::class, 'updaterequests']);
+        Route::get('/updaterequests/{id}', [TeacherEnrollment::class, 'updaterequestsfinal']);
     });
 
     Route::group(['middleware' => 'isstudent'], function () {

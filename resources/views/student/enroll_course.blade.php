@@ -108,7 +108,6 @@
                         </select>
                     </td>
                     <td class='animate__animated animate__fadeIn animate__slower'>
-
                         @if ($errors->has("examtype.$value->id"))
                         <div class="text-danger"> {{ $errors->first("examtype.$value->id") }} </div>
                         @endif

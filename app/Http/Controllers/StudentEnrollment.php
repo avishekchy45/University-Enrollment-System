@@ -38,6 +38,8 @@ class StudentEnrollment extends Controller
         if (!$course_id) {
             return redirect()->back()->with('errormsg', 'Select at least One Course');
         }
+        $limit = CourseLimitation::all()->first();
+        // dd($limit);
         foreach ($course_id as $value) {
             // dd($examtype[$value]);
             $req->validate([
@@ -46,10 +48,6 @@ class StudentEnrollment extends Controller
                 "slectcourse"    => "required|array",
                 "slectcourse.$value" => 'required|exists:courses,id|unique:enrollments,course_id,null,id,student_id,' . session('username'),
             ]);
-        }
-        $limit = CourseLimitation::all()->first();
-        // dd($limit);
-        foreach ($course_id as $value) {
             $obj = new Enrollment;
             $obj->course_id = $value;
             $obj->type = $examtype[$value];
@@ -66,13 +64,11 @@ class StudentEnrollment extends Controller
                 if ($enrolledcredit <= $limit->max_credit) {
                     $obj->save();
                     // $message[$value] = "Successfully Added";
-                    session()->forget("successmessage.$value");
                     session()->forget("errormessage.$value");
                     session()->put("successmessage.$value", "Successfully Added");
                 } else {
                     // $message[$value] = "Maximum Credit Exceeded";
                     session()->forget("successmessage.$value");
-                    session()->forget("errormessage.$value");
                     session()->put("errormessage.$value", "Maximum Credit Exceeded");
                     // dd(compact('message'));
                     // return redirect()->back()->with('message',array($message));
@@ -81,7 +77,6 @@ class StudentEnrollment extends Controller
             } else {
                 // $message[$value] = "Maximum Credit Exceeded";
                 session()->forget("successmessage.$value");
-                session()->forget("errormessage.$value");
                 session()->put("errormessage.$value", "Maximum Student Already Enrolled");
                 // dd(compact('message'));
                 // return redirect()->back()->with('message',array($message));
