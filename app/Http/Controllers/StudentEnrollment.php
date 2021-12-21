@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Session;
 use App\Models\Course;
+use App\Models\CourseLimitation;
 use App\Models\Enrollment;
 
 class StudentEnrollment extends Controller
@@ -18,59 +19,103 @@ class StudentEnrollment extends Controller
                 ->leftJoin('semesters as s', 'semester_id', 's.id')
                 ->select('courses.id', 'title', 'code', 'type', 'credit', 'd.fullfrom as department', 's.semester_no as semester')
                 ->get();
+
             return view('student.enroll_course', compact('data2', 'data'));
         }
+        session()->forget('successmessage');
+        session()->forget('errormessage');
         return view('student.enroll_course', compact('data'));
     }
 
     public function enrollmentfinal(request $req)
     {
-        $totalcredit = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
+        $enrolledcredit = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
             ->where('student_id', '=', session('username'))->sum('c.credit');
         //dd($t);
         $course_id = $req->slectcourse;
         $examtype = $req->examtype;
-        $req->validate([
-            'examtype' => 'required',
-            'slectcourse' => 'required|exists:courses,id|unique:enrollments,course_id,null,id,student_id,' . session('username'),
-        ]);
-        foreach ($course_id as $key => $value) {
+        // dd(count($course_id));
+        if (!$course_id) {
+            return redirect()->back()->with('errormsg', 'Select at least One Course');
+        }
+        foreach ($course_id as $value) {
+            // dd($examtype[$value]);
+            $req->validate([
+                "examtype"    => "required|array",
+                "examtype.$value"  => "required",
+                "slectcourse"    => "required|array",
+                "slectcourse.$value" => 'required|exists:courses,id|unique:enrollments,course_id,null,id,student_id,' . session('username'),
+            ]);
+        }
+        $limit = CourseLimitation::all()->first();
+        // dd($limit);
+        foreach ($course_id as $value) {
             $obj = new Enrollment;
             $obj->course_id = $value;
-            $obj->type = $examtype[$key];
+            $obj->type = $examtype[$value];
             $obj->session = $req->get('session');
             $obj->student_id = session('username');
-            $obj->status = 'pending';
-            //dd($obj);
-            foreach ($course_id as $key => $value) {
-                $totalcredit1[] = Course::where('id', '=', $value)->sum('credit');
-                $t = array_sum($totalcredit1);
+            $obj->status = 'Pending';
+            // dd($obj);
+            $credit = Course::where('id', '=', $value)->select('credit')->first();
+            $enrolledcredit = $credit->credit + $enrolledcredit;
+            $enrolledstudent = Enrollment::where('course_id', '=', $value)->count();
+            // dd($enrolled);
+            // echo $credit->credit;
+            if ($enrolledstudent < $limit->max_student) {
+                if ($enrolledcredit <= $limit->max_credit) {
+                    $obj->save();
+                    // $message[$value] = "Successfully Added";
+                    session()->forget("successmessage.$value");
+                    session()->forget("errormessage.$value");
+                    session()->put("successmessage.$value", "Successfully Added");
+                } else {
+                    // $message[$value] = "Maximum Credit Exceeded";
+                    session()->forget("successmessage.$value");
+                    session()->forget("errormessage.$value");
+                    session()->put("errormessage.$value", "Maximum Credit Exceeded");
+                    // dd(compact('message'));
+                    // return redirect()->back()->with('message',array($message));
+                    return back();
+                }
+            } else {
+                // $message[$value] = "Maximum Credit Exceeded";
+                session()->forget("successmessage.$value");
+                session()->forget("errormessage.$value");
+                session()->put("errormessage.$value", "Maximum Student Already Enrolled");
+                // dd(compact('message'));
+                // return redirect()->back()->with('message',array($message));
+                return back();
             }
-            $totalcredit = $t + $totalcredit;
-            //dd($totalcredit);
-            if ($totalcredit <= 8)
-                $obj->save();
-            else
-                return back()->with('errormsg', 'Maximum Credit Exceeded ');
         }
-        if ($obj)
-            return back()->with('successmsg', 'Enrollment Request Successfull ');
-
-        else
-            return back()->with('errormsg', 'Cannot Request');
+        // dd($enrolledcredit);
+        // return redirect()->back()->with('message',array($message));
+        return back();
     }
 
     public function checkrequests()
     {
         $data = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
-            ->select('c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type')
+            ->select('c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type', 'enrollments.id')
             ->where('student_id', '=', session('username'))
+            ->orderby('enrollments.created_at')
             ->get();
+        $enrolledcredit = 0;
         $data1 = Course::leftJoin('semesters as s', 'semester_id', 's.id')
             ->leftJoin('enrollments as e', 'courses.id', 'e.course_id')
             ->select('s.semester_no as semester', 's.id as id')->where('student_id', '=', session('username'))
             ->get();
-        //dd($data1);
+        foreach ($data as $value) {
+            $enrolledcredit += $value->credit;
+        }
+        $data->enrolledcredit = $enrolledcredit;
+        // dd($enrolledcredit);
         return view('student.check_requests', compact('data', 'data1'));
+    }
+    public function deletecourse($id)
+    {
+        // UserAccount::find($id)->delete();
+        Enrollment::where('id', '=', $id)->delete();
+        return redirect()->back()->with('successmsg', 'Course Deleted Successfully');
     }
 }

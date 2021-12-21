@@ -29,6 +29,10 @@
 </div>
 <br>
 <div class="mainpage">
+    <div>
+        <p class="text-right"><b>Total Credit:</b> {{ $data->enrolledcredit }}</p>
+    </div>
+    <hr>
     <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
         List of all Courses({{$data->count()}} Entries)
     </span>
@@ -42,6 +46,7 @@
             <th>Semester</th>
             <th>Exam Type</th>
             <th>Status</th>
+            <th>Action</th>
         </thead>
         <tbody class="table-bordered">
             @if($data->count())
@@ -55,6 +60,31 @@
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$data1[$key]->semester}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->type}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->status}}</td>
+                <td>
+                    <a href="" class="btn btn-danger btn-sm animate__animated animate__fadeIn animate__slower" data-toggle="modal" data-target="#myModal{{$value->id}}">Delete</a>
+                    <!-- Button to Open the Modal -->
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal{{$value->id}}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Delete Confirmation</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to Delete {{$value->teacher_id}}?
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <a href="" class="btn btn-success">No</a>
+                                    <a href="{{ URL::to('deletecourse/'.$value->id)}}" class="btn btn-danger">Yes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
                 @endforeach
                 @else
             <tr class="text-center">

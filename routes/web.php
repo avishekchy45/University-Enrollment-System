@@ -96,5 +96,6 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/enrollcourse', [StudentEnrollment::class, 'enrollcourse']);
         Route::post('/enrollmentfinal', [StudentEnrollment::class, 'enrollmentfinal']);
         Route::get('/checkrequests', [StudentEnrollment::class, 'checkrequests']);
+        route::get('/deletecourse/{id}',[StudentEnrollment::class, 'deletecourse']);
     });
 });
