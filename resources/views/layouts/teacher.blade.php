@@ -15,10 +15,16 @@
                     @if(Session::has('errormsg'))
                     <div class="alert alert-danger" role="alert">
                         {{Session::get('errormsg')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     @elseif(Session::has('successmsg'))
                     <div class="alert alert-success" role="alert">
                         {{Session::get('successmsg')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     @endif
                     @include('includes.header')
