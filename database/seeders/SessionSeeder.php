@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Session;
 use Illuminate\Database\Seeder;
 
@@ -13,20 +14,18 @@ class SessionSeeder extends Seeder
      */
     public function run()
     {
-        
-        if(Session::count() == 0){
+
+        if (Session::count() == 0) {
 
             Session::insert([
 
                 [
                     'name' => 'Spring 2022',
-             
-                ],
-               
-                
 
+                ],
             ]);
-            
-        } else { echo "\e[31mTable is not empty, therefore NOT "; }
+        } else {
+            echo "\e[31mTable is not empty, therefore NOT ";
+        }
     }
 }

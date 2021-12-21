@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Admin;
 use Illuminate\Database\Seeder;
 
@@ -13,22 +14,18 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        
-        if(Admin::count() == 0){
+        if (Admin::count() == 0) {
 
             Admin::insert([
 
                 [
-                    'name' => 'Admin',
-              'email' => 'admin@gmail.com',
-              'admin_id' =>'Admin',
+                    'name' => 'Admin Account',
+                    'email' => 'admin@gmail.com',
+                    'admin_id' => 'Admin',
                 ],
-               
-                
-
             ]);
-            
-        } else { echo "\e[31mTable is not empty, therefore NOT "; }
-    
+        } else {
+            echo "\e[31mTable is not empty, therefore NOT ";
+        }
     }
 }
