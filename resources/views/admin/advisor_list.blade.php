@@ -46,7 +46,7 @@
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->teacher_id}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->batch}}</td>
                 <td>
-                    <a href="{{ URL::to('update/'.$value->id)}}" class="btn btn-warning btn-sm animate__animated animate__fadeIn animate__fast">Update</a>&nbsp;
+                    <a href="{{ URL::to('editadvisor/'.$value->id)}}" class="btn btn-warning btn-sm animate__animated animate__fadeIn animate__fast">Update</a>&nbsp;
                     <a href="" class="btn btn-danger btn-sm animate__animated animate__fadeIn animate__slower" data-toggle="modal" data-target="#myModal{{$value->id}}">Delete</a>
                     <!-- Button to Open the Modal -->
                     <!-- The Modal -->
@@ -65,7 +65,7 @@
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
                                     <a href="" class="btn btn-success">No</a>
-                                    <a href="{{ URL::to('delete/'.$value->id)}}" class="btn btn-danger">Yes</a>
+                                    <a href="{{ URL::to('deleteadvisor/'.$value->id)}}" class="btn btn-danger">Yes</a>
                                 </div>
                             </div>
                         </div>

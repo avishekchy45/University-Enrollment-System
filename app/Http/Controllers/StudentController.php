@@ -57,7 +57,7 @@ class StudentController extends Controller
     {
         $req->validate([
             'name' => 'required',
-            'email' => 'email|required',
+            'email' => 'email|required|unique:students,email',
         ]);
         $obj = Student::find($id);
         $obj->name = $req->name;

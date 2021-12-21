@@ -50,7 +50,7 @@ class TeacherController extends Controller
     {
         $req->validate([
             'name' => 'required',
-            'email' => 'email|required',
+            'email' => 'email|required|unique:teachers,email',
         ]);
         $obj = Teacher::find($id);
         $obj->name = $req->name;
@@ -63,7 +63,7 @@ class TeacherController extends Controller
     public function deleteteacher($id)
     {
         // UserAccount::find($id)->delete();
-        UserAccount::where('username','=',$id)->delete();
+        UserAccount::where('username', '=', $id)->delete();
         return redirect()->back()->with('successmsg', 'Deleted Successfully');
     }
 }
