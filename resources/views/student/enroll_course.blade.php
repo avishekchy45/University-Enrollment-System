@@ -70,10 +70,10 @@
         <p class="text-right"><b>Exam Type:</b> Regular, Recourse</p>
     </div>
     <hr>
-    <form target="_self" enctype="multipart/form-data" method="post" id="form2" action="{{ URL::to('enrollmentfinal')}}" class="animate__animated animate__zoomIn">
+    <form target="_self" enctype="multipart/form-data" method="post" id="form2" action="{{ URL::to('enrollmentfinal')}}">
         @csrf
         <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
-            List of all Courses({{$data->count()}} Entries)
+            List of All Courses({{$data2->count()}} Entries)
         </span>
         <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
             <thead class="tableheader">
@@ -86,25 +86,44 @@
                 <th>Department</th>
                 <th>Semester</th>
                 <th>Exam Type</th>
+                <th>Message</th>
             </thead>
             <tbody class="table-bordered">
                 @if($data2->count())
                 @foreach($data2 as $value)
                 <tr>
                     <td class='animate__animated animate__fadeIn animate__slower'>{{$loop->iteration}}</td>
-                    <td><input id="check" type="checkbox" name="slectcourse[]" value="{{$value->id}}"></td>
+                    <td><input id="check" type="checkbox" name="slectcourse[{{$value->id}}]" value="{{$value->id}}"></td>
                     <td class='animate__animated animate__fadeIn animate__slower'>{{$value->title}}</td>
                     <td class='animate__animated animate__fadeIn animate__slower'>{{$value->code}}</td>
                     <td class='animate__animated animate__fadeIn animate__slower'>{{$value->type}}</td>
-                    <td class='animate__animated animate__fadeIn animate__slower' >{{$value->credit}}</td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>{{$value->credit}}</td>
                     <td class='animate__animated animate__fadeIn animate__slower'>{{$value->department}}</td>
                     <td class='animate__animated animate__fadeIn animate__slower'>{{$value->semester}}</td>
                     <td class='animate__animated animate__fadeIn animate__slower'>
-                        <select type="text" class="form-control" id="examtype" name="examtype[]" value="">
+                        <select type="text" class="form-control" id="examtype" name="examtype[{{$value->id}}]" value="">
                             <option value="" disabled selected> Select Type</option>
                             <option value="Regular"> Regular </option>
                             <option value="Recourse"> Recourse</option>
                         </select>
+                    </td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>
+                        @if ($errors->has("examtype.$value->id"))
+                        <div class="text-danger"> {{ $errors->first("examtype.$value->id") }} </div>
+                        @endif
+                        @if ($errors->has("slectcourse.$value->id"))
+                        <div class="text-danger"> {{ $errors->first("slectcourse.$value->id") }} </div>
+                        @endif
+                        @if(Session::has("successmessage.$value->id"))
+                        <div class="text-success" role="alert">
+                            {{Session::get("successmessage.$value->id")}}
+                        </div>
+                        @endif
+                        @if(Session::has("errormessage.$value->id"))
+                        <div class="text-danger" role="alert">
+                            {{Session::get("errormessage.$value->id")}}
+                        </div>
+                        @endif
                     </td>
                     <input type="hidden" name="session" class="session" value="{{$sessionname}}">
                 </tr>
@@ -116,14 +135,6 @@
                 @endif
             </tbody>
         </table>
-        @if ($errors->has('examtype'))
-        <div class="form-text alert alert-danger"> {{ $errors->first('examtype') }} </div>
-        @endif
-        <div>
-            @if ($errors->has('slectcourse'))
-            <div class="form-text alert alert-danger"> {{ $errors->first('slectcourse') }} </div>
-            @endif
-        </div>
         <div class="form-group row text-center">
             <div class="col-sm-10">
                 <button type="submit" name="submit" class="btn btn-outline-info">Submit</button>

@@ -11,24 +11,22 @@ use App\Models\Student;
 
 class TeacherEnrollment extends Controller
 {
-  public function enrollstudent(request $request)
+    public function enrollstudent(request $request)
     {
-        
         $data = Session::select('name')->where("status", "=", 1)->get();
         $data1 = Advisor::select('batch')->where("teacher_id", "=", session('username'))->get();
         if ($request->has('search')) {
             $request->validate([
                 'batch' => 'required|exists:advisors,batch',
-                'session' => 'required|exists:sessions,name',
+                'sessionname' => 'required|exists:sessions,name',
             ]);
             $data3 = Student::select('student_id')->where("batch", "=", $request->batch)->get();
             return view('teacher.enroll_student', compact('data3', 'data', 'data1'));
         }
-      
         if ($request->has('stuselect')) {
             $request->validate([
                 'stuid' => 'required|exists:students,student_id',
-               
+
             ]);
             $data2 = Course::leftJoin('departments as d', 'department_id', 'd.id')
                 ->leftJoin('semesters as s', 'semester_id', 's.id')
@@ -37,55 +35,69 @@ class TeacherEnrollment extends Controller
             // dd($request->batch1);
             return view('teacher.enroll_student', compact('data2', 'data', 'data1'));
         }
-
+        session()->forget('successmessage');
+        session()->forget('errormessage');
         return view('teacher.enroll_student', compact('data', 'data1'));
     }
     public function manualenroll(request $req)
     {
+        // dd($req);
+        $student_id = $req->student_id;
         $course_id = $req->slectcourse;
         $examtype = $req->examtype;
-        $student_id = $req->stuid;
-        $req->validate([
-            'examtype' => 'required',
-            'slectcourse' => 'required|exists:courses,id|unique:enrollments,course_id,null,id,student_id,' . $student_id,
-        ]);
-        foreach ($course_id as $key => $value) {
+        // dd(count($course_id));
+        if (!$course_id) {
+            return redirect()->back()->with('errormsg', 'Select at least One Course');
+        }
+        foreach ($course_id as $value) {
+            // dd($examtype[$value]);
+            $req->validate([
+                "examtype"    => "required|array",
+                "examtype.$value"  => "required",
+                "slectcourse"    => "required|array",
+                "slectcourse.$value" => 'required|exists:courses,id|unique:enrollments,course_id,null,id,student_id,' . $student_id,
+            ]);
             $obj = new Enrollment;
             $obj->course_id = $value;
-            $obj->type = $examtype[$key];
+            $obj->type = $examtype[$value];
+            $obj->session = $req->get('sessionname');
             $obj->student_id = $student_id;
-            $obj->session = $req->get('session');
-            $obj->status = 'pending';
+            $obj->status = 'Pending';
+            // dd($obj);
             $obj->save();
+            // $message[$value] = "Successfully Added";
+            session()->forget("errormessage.$value");
+            session()->put("successmessage.$value", "Successfully Added");
         }
-        if ($obj)
-            return back()->with('successmsg', 'Enrollment Request Successfull ');
-
-        else
-            return back()->with('errormsg', 'Cannot Request');
+        return back();
     }
-    public function updaterequests()
+    public function updaterequests(request $request)
     {
-       
-        $data3=Advisor::select('batch')->where('teacher_id', '=',  session('username'))->get();
-        foreach($data3 as $value)
-        $data2=Student::select('student_id')->where('batch', '=', $value->batch)->get();
-        //dd($data2);
-        //$d=array_sum($data2);
-        //for($i=0;$i<=$d;$i++)
-        foreach($data2 as $value1)
-     // dd(($key));
-        $data = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
-            ->select('c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type','enrollments.student_id')
-            ->where('student_id', '=',$value1->student_id)
-            ->get();
-          //dd($data);
-        $data1 = Course::leftJoin('semesters as s', 'semester_id', 's.id')
-            ->leftJoin('enrollments as e', 'courses.id', 'e.course_id')
-            ->select('s.semester_no as semester', 's.id as id')->where('student_id', '=', $value1->student_id)
-            ->get();
-           // dd($data1);
-        return view('teacher.update_requests', compact('data', 'data1'));
-       
+        $data = Session::select('name')->where("status", "=", 1)->get();
+        $data2 = Advisor::select('batch')->where('teacher_id', '=',  session('username'))->get();
+
+        // dd($data);
+        if ($request->has('search')) {
+            // dd($request);
+            $request->validate([
+                'batch' => 'required|exists:advisors,batch',
+                'sessionname' => 'required|exists:sessions,name',
+            ]);
+            $data3 = Enrollment::leftJoin('students as s', 'enrollments.student_id', 's.student_id')
+                ->leftJoin('courses as c', 'enrollments.course_id', 'c.id')
+                ->where('batch', '=', $request->batch)
+                ->where('session', '=', $request->sessionname)
+                ->select('enrollments.id','c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type', 'enrollments.student_id')
+                ->get();
+            // dd($data3);
+            return view('teacher.update_requests', compact('data', 'data2', 'data3'));
+        }
+        return view('teacher.update_requests', compact('data', 'data2'));
+    }
+    public function updaterequestsfinal(request $req,$id){
+        $obj = Enrollment::find($id);
+        $obj->status = "Accepted";
+        $obj->save();
+        return back()->with('successmsg', 'Enrollment Request Successfully Updated');
     }
 }

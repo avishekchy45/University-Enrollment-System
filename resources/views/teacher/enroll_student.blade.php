@@ -34,18 +34,18 @@
         <div class="form-group row">
             <label for="teaid" class="col-sm-2 col-form-label"> Select Available Session </label>
             <div class="col-sm-10">
-                <select type="text" class="form-control" id="session" name="session" value="{{ old('session') }}" required>
+                <select type="text" class="form-control" id="session" name="sessionname" value="{{ old('sessionname') }}" required>
                     <option value="" disabled selected>Select Session</option>
                     @foreach($data as $d)
-                    @if (old('session')==$d->name)
+                    @if (old('sessionname')==$d->name)
                     <option value={{$d->name}} selected>{{$d->name }}</option>
                     @else
                     <option value="{{$d->name}}"> {{$d->name}}</option>
                     @endif
                     @endforeach
                 </select>
-                @if ($errors->has('session'))
-                <div class="form-text alert alert-danger"> {{ $errors->first('session') }} </div>
+                @if ($errors->has('sessionname'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('sessionname') }} </div>
                 @endif
             </div>
         </div>
@@ -76,11 +76,9 @@
     @else
     <p class="alert alert-danger text-center">Enrollment Closed</p>
     @endif
-    <div>
-        @if(isset($_GET['search']))
-        @php($sessionname=$_GET['session'])
-        @php($batch=$_GET['batch'])
-    </div>
+    @if(isset($_GET['search']))
+    @php($sessionname=$_GET['sessionname'])
+    @php($batch=$_GET['batch'])
     <div>
         <p class="text-right"><b>Session:</b> {{$sessionname}} </p>
         <p class="text-right"><b>Exam Type:</b> Regular, Recourse </p>
@@ -111,8 +109,8 @@
                 @endif
             </div>
             <div>
-                <input type="hidden" name="session1" class="session1" value="{{$sessionname}}">
-                <input type="hidden" name="batch1" class="session1" value="{{$batch}}">
+                <input type="hidden" name="sessionname" class="sessionname" value="{{$sessionname}}">
+                <input type="hidden" name="batch" class="batch" value="{{$batch}}">
             </div>
         </div>
         <div class="form-group row text-center">
@@ -122,94 +120,99 @@
         </div>
     </form>
     @endif
-</div>
-@if(isset($_GET['stuselect']))
-<div>
-    @php($sessionname=$_GET['session1'])
-    @php($batch=$_GET['batch1'])
-    @php($student_id=$_GET['stuid'])
-</div>
-<div>
-    <p class="text-right"><b>Session:</b> {{$sessionname}} </p>
-    <p class="text-right"><b>Student ID:</b> {{$student_id}} </p>
-    <p class="text-right"><b>Exam Type:</b> Regular, Recourse </p>
-    <p class="text-right"><b>Batch:</b> {{$batch}} </p>
-</div>
-<hr>
-<style>
-    #form1 {
-        display: none;
-    }
-
-    #form2 {
-        display: none;
-    }
-</style>
-
-
-<form target="_self" enctype="multipart/form-data" method="post" id="form3" action="{{ URL::to('manualenroll')}}" class="animate__animated animate__zoomIn">
-    @csrf
-    <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
-        List of all Courses({{$data->count()}} Entries)
-    </span>
-    <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
-        <thead class="tableheader">
-            <th>No.</th>
-            <th></th>
-            <th> Title</th>
-            <th> Code</th>
-            <th> Type</th>
-            <th>Credit</th>
-            <th>Department</th>
-            <th>Semester</th>
-            <th>Exam Type</th>
-        </thead>
-        <tbody class="table-bordered">
-            @if($data2->count())
-            @foreach($data2 as $value)
-            <tr>
-                <td class='animate__animated animate__fadeIn animate__slower'>{{$loop->iteration}}</td>
-                <td><input id="check" type="checkbox" name="slectcourse[]" value="{{$value->id}}"></td>
-                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->title}}</td>
-                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->code}}</td>
-                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->type}}</td>
-                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->credit}}</td>
-                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->department}}</td>
-                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->semester}}</td>
-                <td class='animate__animated animate__fadeIn animate__slower'>
-                    <select type="text" class="form-control" id="examtype" name="examtype[]" value="">
-                        <option value="" disabled selected> Select Type</option>
-                        <option value="Regular"> Regular </option>
-                        <option value="Recourse"> Recourse</option>
-                    </select>
-                </td>
-            </tr>
-            @endforeach
-            @else
-            <tr class="text-center">
-                <td colspan="9">No Course Found</td>
-            </tr>
-            @endif
-        </tbody>
-    </table>
+    @if(isset($_GET['stuselect']))
     <div>
-        <input type="hidden" name="session" class="session" value="{{$sessionname}}">
-        <input type="hidden" name="stuid" class="stuid" value="{{$student_id}}">
+        @php($sessionname=$_GET['sessionname'])
+        @php($batch=$_GET['batch'])
+        @php($student_id=$_GET['stuid'])
     </div>
-    @if ($errors->has('examtype'))
-    <div class="form-text alert alert-danger"> {{ $errors->first('examtype') }} </div>
-    @endif
     <div>
-        @if ($errors->has('slectcourse'))
-        <div class="form-text alert alert-danger"> {{ $errors->first('slectcourse') }} </div>
-        @endif
+        <p class="text-right"><b>Session:</b> {{$sessionname}} </p>
+        <p class="text-right"><b>Student ID:</b> {{$student_id}} </p>
+        <p class="text-right"><b>Exam Type:</b> Regular, Recourse </p>
+        <p class="text-right"><b>Batch:</b> {{$batch}} </p>
     </div>
-    <div class="form-group row text-center">
-        <div class="col-sm-10">
-            <button type="submit" name="submit" class="btn btn-outline-info">Submit</button>
+    <hr>
+    <style>
+        #form1 {
+            display: none;
+        }
+        #form2 {
+            display: none;
+        }
+    </style>
+    <form target="_self" enctype="multipart/form-data" method="post" id="form3" action="{{ URL::to('manualenroll')}}">
+        @csrf
+        <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
+            List of All Courses({{$data2->count()}} Entries)
+        </span>
+        <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
+            <thead class="tableheader">
+                <th>No.</th>
+                <th></th>
+                <th>Title</th>
+                <th>Code</th>
+                <th>Type</th>
+                <th>Credit</th>
+                <th>Department</th>
+                <th>Semester</th>
+                <th>Exam Type</th>
+                <th>Message</th>
+            </thead>
+            <tbody class="table-bordered">
+                @if($data2->count())
+                @foreach($data2 as $value)
+                <tr>
+                    <td class='animate__animated animate__fadeIn animate__slower'>{{$loop->iteration}}</td>
+                    <td><input id="check" type="checkbox" name="slectcourse[{{$value->id}}]" value="{{$value->id}}"></td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>{{$value->title}}</td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>{{$value->code}}</td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>{{$value->type}}</td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>{{$value->credit}}</td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>{{$value->department}}</td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>{{$value->semester}}</td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>
+                        <select type="text" class="form-control" id="examtype" name="examtype[{{$value->id}}]" value="">
+                            <option value="" disabled selected> Select Type</option>
+                            <option value="Regular"> Regular </option>
+                            <option value="Recourse"> Recourse</option>
+                        </select>
+                    </td>
+                    <td class='animate__animated animate__fadeIn animate__slower'>
+                        @if ($errors->has("examtype.$value->id"))
+                        <div class="text-danger"> {{ $errors->first("examtype.$value->id") }} </div>
+                        @endif
+                        @if ($errors->has("slectcourse.$value->id"))
+                        <div class="text-danger"> {{ $errors->first("slectcourse.$value->id") }} </div>
+                        @endif
+                        @if(Session::has("successmessage.$value->id"))
+                        <div class="text-success" role="alert">
+                            {{Session::get("successmessage.$value->id")}}
+                        </div>
+                        @endif
+                        @if(Session::has("errormessage.$value->id"))
+                        <div class="text-danger" role="alert">
+                            {{Session::get("errormessage.$value->id")}}
+                        </div>
+                        @endif
+                    </td>
+                    <input type="hidden" name="student_id" class="student_id" value="{{$student_id}}">
+                    <input type="hidden" name="sessionname" class="sessionname" value="{{$sessionname}}">
+                </tr>
+                @endforeach
+                @else
+                <tr class="text-center">
+                    <td colspan="9">No Course Found</td>
+                </tr>
+                @endif
+            </tbody>
+        </table>
+        <div class="form-group row text-center">
+            <div class="col-sm-10">
+                <button type="submit" name="submit" class="btn btn-outline-info">Submit</button>
+            </div>
         </div>
-    </div>
-</form>
-@endif
+    </form>
+    @endif
 </div>
 @endsection

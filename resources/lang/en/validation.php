@@ -140,6 +140,13 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'slectcourse.*' => [
+            'required' => 'Select Course.',
+            'unique' => 'Already Taken.',
+        ],
+        'examtype.*' => [
+            'required' => 'Select Exam Type.',
+        ]
     ],
 
     /*

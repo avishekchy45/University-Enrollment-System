@@ -29,25 +29,86 @@
 </div>
 <br>
 <div class="mainpage">
+    @if($data->count())
+    <form target="_self" enctype="multipart/form-data" method="get" id="form1" class="animate__animated animate__zoomIn">
+        @csrf
+        <div class="form-group row">
+            <label for="teaid" class="col-sm-2 col-form-label"> Select Available Session </label>
+            <div class="col-sm-10">
+                <select type="text" class="form-control" id="session" name="sessionname" value="{{ old('sessionname') }}" required>
+                    <option value="" disabled selected>Select Session</option>
+                    @foreach($data as $d)
+                    @if (old('sessionname')==$d->name)
+                    <option value={{$d->name}} selected>{{$d->name }}</option>
+                    @else
+                    <option value="{{$d->name}}"> {{$d->name}}</option>
+                    @endif
+                    @endforeach
+                </select>
+                @if ($errors->has('sessionname'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('sessionname') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="teaid" class="col-sm-2 col-form-label">Select Batch </label>
+            <div class="col-sm-10">
+                <select type="text" class="form-control" id="batch" name="batch" value="{{ old('batch') }}" required>
+                    <option value="" disabled selected>Select batch</option>
+                    @foreach($data2 as $d)
+                    @if (old('batch')==$d->batch)
+                    <option value={{$d->batch}} selected>{{$d->batch }}</option>
+                    @else
+                    <option value="{{$d->batch}}"> {{$d->batch}}</option>
+                    @endif
+                    @endforeach
+                </select>
+                @if ($errors->has('batch'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('batch') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row text-center">
+            <div class="col-sm-10">
+                <button type="submit" name="search" class="btn btn-outline-info">Submit</button>
+            </div>
+        </div>
+    </form>
+    @else
+    <p class="alert alert-danger text-center">Enrollment Closed</p>
+    @endif
+    @if(isset($_GET['search']))
+    @php($sessionname=$_GET['sessionname'])
+    @php($batch=$_GET['batch'])
+    <div>
+        <p class="text-right"><b>Session:</b> {{$sessionname}} </p>
+        <p class="text-right"><b>Exam Type:</b> Regular, Recourse </p>
+        <p class="text-right"><b>Batch:</b> {{$batch}} </p>
+    </div>
+    <hr>
+    <style>
+        #form1 {
+            display: none;
+        }
+    </style>
     <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
-        List of all Courses({{$data->count()}} Entries)
+        List of all Enrollments({{$data3->count()}} Entries)
     </span>
     <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
         <thead class="tableheader">
             <th>No.</th>
-            <th> Student ID</th>
-            <th> Title</th>
-            <th> Code</th>
+            <th>Student ID</th>
+            <th>Title</th>
+            <th>Code</th>
             <th>Course Type</th>
             <th>Credit</th>
-            <th>Semester</th>
             <th>Exam Type</th>
             <th>Status</th>
             <th>Actions</th>
         </thead>
         <tbody class="table-bordered">
-            @if($data->count())
-            @foreach($data as $key => $value)
+            @if($data3->count())
+            @foreach($data3 as $key => $value)
             <tr>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$loop->iteration}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->student_id}}</td>
@@ -55,34 +116,10 @@
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->code}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->coursetype}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->credit}}</td>
-                <td class='animate__animated animate__fadeIn animate__slower'>{{$data1[$key]->semester}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->type}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->status}}</td>
                 <td>
-                    <a href="{{ URL::to('update/'.$value->id)}}" class="btn btn-warning btn-sm animate__animated animate__fadeIn animate__fast">Update</a>&nbsp;
-                    <a href="" class="btn btn-danger btn-sm animate__animated animate__fadeIn animate__slower" data-toggle="modal" data-target="#myModal{{$value->id}}">Delete</a>
-                    <!-- Button to Open the Modal -->
-                    <!-- The Modal -->
-                    <div class="modal" id="myModal{{$value->id}}">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Delete Confirmation</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    Are you sure you want to Delete {{$value->student_id}}?
-                                </div>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <a href="" class="btn btn-success">No</a>
-                                    <a href="{{ URL::to('delete/'.$value->id)}}" class="btn btn-danger">Yes</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="{{ URL::to('updaterequests/'.$value->id)}}" class="btn btn-warning btn-sm animate__animated animate__fadeIn animate__fast">Update</a>&nbsp;
                 </td>
                 @endforeach
                 @else
@@ -92,4 +129,6 @@
             @endif
         </tbody>
     </table>
-</div @endsection
+    @endif
+</div>
+@endsection
