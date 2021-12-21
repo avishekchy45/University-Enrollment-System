@@ -11,6 +11,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TeacherEnrollment;
 use App\Http\Controllers\StudentEnrollment;
 use App\Http\Controllers\AdminEnrollment;
+use App\Http\Controllers\ProfileController;
 
 use App\Models\Teacher;
 use App\Models\Student;
@@ -72,6 +73,8 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/editcourse/{id}', [CourseController::class, 'editcourse']);
         Route::post('/updatecourse/{id}', [CourseController::class, 'updatecourse']);
         route::get('/deletecourse/{student_id}',[CourseController::class, 'deletecourse']);
+        route::get('admin/editprofile',[ProfileController::class, 'adminprofile']);
+        route::post('/updateadminprofile',[ProfileController::class, 'updateadminprofile']);
     });
 
     Route::group(['middleware' => 'isteacher'], function () {
@@ -87,6 +90,9 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/enrollstudent', [TeacherEnrollment::class, 'enrollstudent']);
         Route::post('/manualenroll', [TeacherEnrollment::class, 'manualenroll']);
         Route::get('/updaterequests', [TeacherEnrollment::class, 'updaterequests']);
+        route::get('teacher/editprofile',[ProfileController::class, 'teacherprofile']);
+        route::post('/updateteacherprofile',[ProfileController::class, 'updateteacherprofile']);
+        Route::get('/updaterequests/{id}', [TeacherEnrollment::class, 'updaterequestsfinal']);
     });
 
     Route::group(['middleware' => 'isstudent'], function () {
@@ -102,5 +108,8 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/enrollcourse', [StudentEnrollment::class, 'enrollcourse']);
         Route::post('/enrollmentfinal', [StudentEnrollment::class, 'enrollmentfinal']);
         Route::get('/checkrequests', [StudentEnrollment::class, 'checkrequests']);
+        route::get('student/editprofile',[ProfileController::class, 'studentprofile']);
+        route::post('/updatestudentprofile',[ProfileController::class, 'updatestudentprofile']);
+        route::get('/deletecourse/{id}',[StudentEnrollment::class, 'deletecourse']);
     });
 });

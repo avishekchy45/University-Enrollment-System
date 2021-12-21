@@ -3,7 +3,7 @@
         <tbody>
             <tr>
                 <td style="height: 49px; text-align: left; vertical-align: top; border-bottom: #727272 2px solid;" colspan="3">
-                    <img alt="Premier University" src="images/puclogo.jpg" style="height: 40px">
+                    <img alt="Premier University" src="{{URL::to('images/puclogo.jpg')}}" style="height: 40px">
                     <span style="font-size: 12pt; color: #000000; font-family: Palatino Linotype">
                         <strong> Premier University | I Am <span style="color:Firebrick;font-weight:bold;">{{session('name')}}</span></strong>
                     </span>
@@ -17,7 +17,7 @@
                                 <td style="height: 25px;text-align:left;">
                                     &nbsp;
                                     <a href="/{{session('userrole')}}" class="btn menuoption">Home</a>
-                                    <a href="" class="btn menuoption">Edit Profile</a>
+                                    <a href="/{{session('userrole')}}/editprofile" class="btn menuoption">Edit Profile</a>
                                 </td>
                                 <td style="height: 25px; text-align:right;">
                                     <a href="/logout" class="btn signoutbtn">Signout</a>
