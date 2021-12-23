@@ -83,6 +83,6 @@ class AdminEnrollment extends Controller
                 'max_student' => $maxstudent,
                 'cost_per_credit' => $costpercredit
             ]);
-        return redirect()->back()->with('successmsg', 'Suuccessfully Updated Course Limitation');
+        return redirect()->back()->with('successmsg', 'Successfully Updated Course Limitation');
     }
 }
