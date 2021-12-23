@@ -79,7 +79,7 @@
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
                                     <a href="" class="btn btn-success">No</a>
-                                    <a href="{{ URL::to('deletecourse/'.$value->id)}}" class="btn btn-danger">Yes</a>
+                                    <a href="{{ URL::to('deleteencourse/'.$value->id)}}" class="btn btn-danger">Yes</a>
                                 </div>
                             </div>
                         </div>
