@@ -113,6 +113,6 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/checkrequests', [StudentEnrollment::class, 'checkrequests']);
         route::get('student/editprofile', [ProfileController::class, 'studentprofile']);
         route::post('/updatestudentprofile', [ProfileController::class, 'updatestudentprofile']);
-        route::get('/deletecourse/{id}', [StudentEnrollment::class, 'deletecourse']);
+        route::get('/deleteencourse/{id}', [StudentEnrollment::class, 'deletecourse']);
     });
 });
