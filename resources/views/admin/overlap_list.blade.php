@@ -128,7 +128,7 @@
                         last: 'Last'
                     }
                 },
-                "lengthMenu": "Show _MENU_ Entries<br><br>List of Overlapped Corses",
+                "lengthMenu": "Show _MENU_ Entries<br><br>List of Overlapped Courses",
                 // "info": "",
             },
             "order": [],
