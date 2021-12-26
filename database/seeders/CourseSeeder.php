@@ -74,7 +74,7 @@ class CourseSeeder extends Seeder
           'code' => 'CSE 222',
           'title' => 'Data Structure Laboratory',
           'department_id' => 1,
-          'semester_id' => 2,
+          'semester_id' => 3,
           'type' => 'Laboratory',
           'credit' => '1.5',
         ],

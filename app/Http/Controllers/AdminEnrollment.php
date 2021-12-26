@@ -19,12 +19,15 @@ class AdminEnrollment extends Controller
             //     ->get();
             $data3 = Course::all();
             $course = array();
+            $semester = array();
             foreach ($data3 as $d) {
-                $course[$d->title]=$d->id;
+                $course[$d->title] = $d->id;
                 // array_push($course, $d->id);
+                $semester[$d->id] = $d->semester_id;
             }
+            // dd($semester);
             // $coursenumber = count($data3);
-            $data2 = Enrollment::where('session','=',$request->session)->get();
+            $data2 = Enrollment::where('session', '=', $request->session)->get();
             $enrolled = array();
             foreach ($data2 as $d) {
                 // print_r($d->student_id);
@@ -38,7 +41,10 @@ class AdminEnrollment extends Controller
             // print_r(array_values($course));
             foreach (array_values($course) as $i) {
                 foreach (array_values($course) as $j) {
-                    $overlap[$i][$j] = 0;
+                    if ($semester[$i] == $semester[$j]) {
+                        $overlap[$i][$j] = 'Same Semester';
+                    } else
+                        $overlap[$i][$j] = 0;
                 }
             }
             foreach (array_keys($enrolled) as $key) {
@@ -47,6 +53,8 @@ class AdminEnrollment extends Controller
                     for ($j = $i + 1; $j < $taken; $j++) {
                         $course1 = $enrolled[$key][$i];
                         $course2 = $enrolled[$key][$j];
+                        if ($overlap[$course1][$course2] == 'Same Semester')
+                            continue;
                         $overlap[$course1][$course2] += 1;
                         $overlap[$course2][$course1] += 1;
                     }
