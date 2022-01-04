@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <label for="email" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
                 <input type="password" class="form-control" id="password" name="password" value="{{$data1->password }}" required>
                 @if ($errors->has('password'))
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">Password</label>
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
                 <input type="email" class="form-control" id="email" name="email" value="{{$data->email }}" required>
                 @if ($errors->has('email'))

@@ -21,7 +21,7 @@ class AdminSeeder extends Seeder
                 [
                     'name' => 'Admin Account',
                     'email' => 'admin@gmail.com',
-                    'admin_id' => 'Admin',
+                    'admin_id' => 'admin',
                 ],
             ]);
         } else {
