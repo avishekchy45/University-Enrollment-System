@@ -83,15 +83,15 @@
             @if(count($overlap) > 0)
             @foreach(array_values($course) as $i)
                 @foreach (array_values($course) as $j)
-                    @if($i === $j)
+                    @if($i === $j or $overlap[$i][$j] == 'Same Semester' or $overlap[$i][$j] == 'Already Counted' or $overlap[$i][$j] == '0')
                         @continue
                     @endif
                     <tr>
                         <td class='animate__animated animate__fadeIn animate__slower'>
-                            {{ array_keys($course)[$i-1] }}<br>
+                            {{ array_keys($course)[$i-1] }} (Semester: {{ $semester[array_values($course)[$i-1]] }} )
                         </td>
                         <td class="animate__animated animate__fadeIn animate__slower">
-                            {{ array_keys($course)[$j-1] }}
+                            {{ array_keys($course)[$j-1] }} (Semester: {{ $semester[array_values($course)[$j-1]] }}) 
                         </td>
                         <td class="animate__animated animate__fadeIn animate__slower">
                             {{ $overlap[$i][$j] }}

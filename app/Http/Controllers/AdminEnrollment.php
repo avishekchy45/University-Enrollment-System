@@ -25,6 +25,7 @@ class AdminEnrollment extends Controller
                 // array_push($course, $d->id);
                 $semester[$d->id] = $d->semester_id;
             }
+            // dd($course);
             // dd($semester);
             // $coursenumber = count($data3);
             $data2 = Enrollment::where('session', '=', $request->session)->get();
@@ -34,6 +35,7 @@ class AdminEnrollment extends Controller
                 // array_push($enrolled[$d->student_id], $d->course_id);
                 $enrolled[$d->student_id][] = $d->course_id;
             }
+            // dd($enrolled);
             $overlap = array();
             // dd($request->session);
             // print_r($course);
@@ -53,17 +55,23 @@ class AdminEnrollment extends Controller
                     for ($j = $i + 1; $j < $taken; $j++) {
                         $course1 = $enrolled[$key][$i];
                         $course2 = $enrolled[$key][$j];
+                        if ($course1 > $course2) {
+                            $course1 = $course1 + $course2;
+                            $course2 = $course1 - $course2;
+                            $course1 = $course1 - $course2;
+                        }
                         if ($overlap[$course1][$course2] == 'Same Semester')
                             continue;
                         $overlap[$course1][$course2] += 1;
-                        $overlap[$course2][$course1] += 1;
+                        $overlap[$course2][$course1] = 'Already Counted';
                     }
                 }
             }
+            // dd($overlap);
             // dd(array_keys($course)[1]);
             // dd($enrolled);
             // dd($data2);
-            return view('admin.overlap_list', compact('course', 'overlap', 'data'));
+            return view('admin.overlap_list', compact('semester','course', 'overlap', 'data'));
         }
         return view('admin.overlap_list', compact('data'));
     }
