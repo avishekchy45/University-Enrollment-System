@@ -1,7 +1,7 @@
 @extends('layouts.student')
 
 @section('head')
-<title>PUC-Student Home | Student</title>
+<title>PUC-Student | Enrollment</title>
 @endsection
 
 @section('main')

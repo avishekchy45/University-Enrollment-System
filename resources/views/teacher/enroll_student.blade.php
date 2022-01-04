@@ -1,7 +1,7 @@
 @extends('layouts.teacher')
 
 @section('head')
-<title>PUC-Teacher Home | Teacher</title>
+<title>PUC-Teacher | Enrollment</title>
 @endsection
 
 @section('main')
