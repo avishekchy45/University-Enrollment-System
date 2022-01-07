@@ -33,7 +33,7 @@
 <div class="mainpage">
     <form target="_self" enctype="multipart/form-data" method="POST" action="{{ URL::to('updatecourselimit')}}" class="animate__animated animate__zoomIn">
         @csrf
-        <h5 class='text-center formheader'>Session Registration Form</h5><br>
+        <h5 class='text-center formheader'>Course Limitation Form</h5><br>
         @foreach($data as $value)
         <div class="form-group row">
             <label for="teaid" class="col-sm-2 col-form-label">Maximum Student per Section</label>
