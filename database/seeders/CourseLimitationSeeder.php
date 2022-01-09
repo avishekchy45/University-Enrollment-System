@@ -20,8 +20,8 @@ class CourseLimitationSeeder extends Seeder
 
                 [
                     'max_student' => 4,
-                    'max_credit' => 16,
-                    'cost_per_credit' => 1800,
+                    'max_credit' => 11,
+                    'cost_per_credit' => 2100,
                 ],
             ]);
         } else {

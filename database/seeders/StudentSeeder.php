@@ -26,7 +26,7 @@ class StudentSeeder extends Seeder
                     'name' => 'Anik Barua',
                     'email' => 'anikclassroom@gmail.com',
                     'phone_num' => '01516710608',
-                    'address' => 'Nondonkanon 1 no lane',
+                    'address' => 'Nondonkanon 1 no lane, Chattogram',
                     'batch' => '10',
                 ],
                 [
@@ -34,7 +34,7 @@ class StudentSeeder extends Seeder
                     'name' => 'Avishek Chowdhury',
                     'email' => 'avishekchy45@gmail.com',
                     'phone_num' => '01816486550',
-                    'address' => 'Sadarghat',
+                    'address' => 'Sadarghat, Chattogram',
                     'batch' => '10',
 
                 ],
@@ -43,7 +43,7 @@ class StudentSeeder extends Seeder
                     'name' => 'Mohammad Ahasan hossen',
                     'email' => 'ahasanhossen57@gmail.com',
                     'phone_num' => '01842701022',
-                    'address' => 'Raozan',
+                    'address' => 'Raozan, Chattogram',
                     'batch' => '11',
                 ],
                 [
@@ -61,7 +61,14 @@ class StudentSeeder extends Seeder
                     'phone_num' => '',
                     'address' => '',
                     'batch' => '12',
-
+                ],
+                [
+                    'student_id' => 'demo_student',
+                    'name' => 'Mark Zuckerberg',
+                    'email' => 'zuckn@gmail.com',
+                    'phone_num' => '',
+                    'address' => '',
+                    'batch' => '34',
                 ],
             ]);
         } else {

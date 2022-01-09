@@ -19,9 +19,14 @@ class AdminSeeder extends Seeder
             Admin::insert([
 
                 [
-                    'name' => 'Admin Account',
+                    'name' => 'Admin',
                     'email' => 'admin@gmail.com',
                     'admin_id' => 'admin',
+                ],
+                [
+                    'name' => 'Demo Admin',
+                    'email' => 'admin2@gmail.com',
+                    'admin_id' => 'demo_admin',
                 ],
             ]);
         } else {

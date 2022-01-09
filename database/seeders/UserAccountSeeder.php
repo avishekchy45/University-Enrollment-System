@@ -20,7 +20,12 @@ class UserAccountSeeder extends Seeder
             UserAccount::insert([
 
                 [
-                    'username' => 'Admin',
+                    'username' => 'admin',
+                    'role' => 'admin',
+                    'password' => Hash::make('123456'),
+                ],
+                [
+                    'username' => 'demo_admin',
                     'role' => 'admin',
                     'password' => Hash::make('123456'),
                 ],
@@ -31,6 +36,11 @@ class UserAccountSeeder extends Seeder
                 ],
                 [
                     'username' => 'minhaz_cse',
+                    'role' => 'teacher',
+                    'password' => Hash::make('123456'),
+                ],
+                [
+                    'username' => 'demo_teacher',
                     'role' => 'teacher',
                     'password' => Hash::make('123456'),
                 ],
@@ -56,6 +66,11 @@ class UserAccountSeeder extends Seeder
                 ],
                 [
                     'username' => '1550',
+                    'role' => 'student',
+                    'password' => Hash::make('123456'),
+                ],
+                [
+                    'username' => 'demo_student',
                     'role' => 'student',
                     'password' => Hash::make('123456'),
                 ],

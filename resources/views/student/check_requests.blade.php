@@ -88,7 +88,7 @@
                 @endforeach
                 @else
             <tr class="text-center">
-                <td colspan="8" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Course Found</td>
+                <td colspan="9" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Course Found</td>
             </tr>
             @endif
         </tbody>

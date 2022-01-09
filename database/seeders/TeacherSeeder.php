@@ -31,7 +31,11 @@ class TeacherSeeder extends Seeder
                     'email' => 'minhaz027@yahoo.com',
                     'teacher_id' => 'minhaz_cse',
                 ],
-
+                [
+                    'name' => 'Demo Teacher',
+                    'email' => 'demoteacher@gmail.com',
+                    'teacher_id' => 'demo_teacher',
+                ],
 
             ]);
         } else {

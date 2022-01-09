@@ -113,7 +113,7 @@
                 // "info": "",
             },
             "order": [],
-            "lengthMenu": [5, 10, 20, 50, 100],
+            "lengthMenu": [10, 20, 50, 100],
             columnDefs: [{
                 orderable: false,
                 targets: [0, 4, 5, 7]

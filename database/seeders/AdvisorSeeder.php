@@ -31,6 +31,10 @@ class AdvisorSeeder extends Seeder
                     'teacher_id' => 'aniksen_cse',
                     'batch' => '12',
                 ],
+                [
+                    'teacher_id' => 'demo_teacher',
+                    'batch' => '34',
+                ],
             ]);
         } else {
             echo "\e[31mTable is not empty, therefore NOT ";

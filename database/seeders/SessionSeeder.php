@@ -20,8 +20,10 @@ class SessionSeeder extends Seeder
             Session::insert([
 
                 [
+                    'name' => 'Fall 2021',
+                ],
+                [
                     'name' => 'Spring 2022',
-
                 ],
             ]);
         } else {
