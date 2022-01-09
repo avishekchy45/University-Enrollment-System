@@ -29,31 +29,32 @@
 <br>
 <div class="mainpage">
 
-<form  enctype="multipart/form-data" method="POST" action="{{URL::to('updateadminprofile')}}" class="animate__animated animate__zoomIn">
+    <form enctype="multipart/form-data" method="POST" action="{{URL::to('updateadminprofile')}}" class="animate__animated animate__zoomIn">
         @csrf
-        <h5 class='text-center formheader'>Update Profile</h5><br>
+        <h5 class='text-center formheader'>Update Profile</h5>
+        <h6 class='text-center text-danger'> (For any changes old password is required)</h6><br>
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" name="name" value="{{ $data->name }}" required>
+                <input type="text" class="form-control" id="name" name="name" value="{{ $data->name }}">
                 @if ($errors->has('name'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('name') }} </div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">Password</label>
+            <label for="email" class="col-sm-2 col-form-label">New Password</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="password" name="password" value="{{$data1->password }}" required>
-                @if ($errors->has('password'))
-                <div class="form-text alert alert-danger"> {{ $errors->first('password') }} </div>
+                <input type="password" class="form-control" id="password" name="newpassword">
+                @if ($errors->has('newpassword'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('newpassword') }} </div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email" value="{{$data->email }}" required>
+                <input type="email" class="form-control" id="email" name="email" value="{{$data->email }}">
                 @if ($errors->has('email'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('email') }} </div>
                 @endif
@@ -74,6 +75,15 @@
                 <input type="text" class="form-control" id="address" name="address" value="{{$data->address }}">
                 @if ($errors->has('address'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('address') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label text-danger">Old Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" name="oldpassword" required>
+                @if ($errors->has('oldpassword'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('oldpassword') }} </div>
                 @endif
             </div>
         </div>

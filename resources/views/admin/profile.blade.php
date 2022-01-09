@@ -5,7 +5,7 @@
 @endsection
 
 @section('profilepicture')
-<img alt="Profile Picture" src="uploads/default.png" style="width:200px;height:150px;border-width:0px;float:left;">
+<img class="pp" alt="Profile Picture" src="uploads/default.png" style="width:200px;height:150px;border-width:0px;float:left;">
 @endsection
 
 @section('main')

@@ -215,13 +215,14 @@ input:checked + .slider:before {
         margin-left: 1rem !important;
         margin-right: 1rem !important;
     }
-    /* .listcaption{
-        margin-left: -1rem !important;
-    } */
+    .pp{
+        margin-right: 5rem;
+    }
 }
 @media only screen and (max-width: 600px) {
     .mainopt {
         /* margin-left: -1rem !important; */
         margin-right: -1rem !important;
     }
+   
 }
