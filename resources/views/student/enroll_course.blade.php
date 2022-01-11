@@ -59,6 +59,9 @@
         <p class="text-right"><b>Session:</b> {{$sessionname}}</p>
         <p class="text-right"><b>Exam Type:</b> Regular, Recourse</p>
     </div>
+    @if ($errors->has("session"))
+    <div class="text-danger"> {{ $errors->first("session") }} </div>
+    @endif
     <hr>
     <form target="_self" enctype="multipart/form-data" method="post" id="form2" action="{{ URL::to('enrollmentfinal')}}">
         @csrf

@@ -109,7 +109,8 @@
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->type}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->status}}</td>
                 <td>
-                    <a href="{{ URL::to('updaterequests/'.$value->id)}}" class="btn btn-warning btn-sm animate__animated animate__fadeIn animate__fast">Update</a>&nbsp;
+                    <a href="{{ URL::to('updaterequests/'.$value->id)}}" class="btn btn-warning btn-sm animate__animated animate__fadeIn animate__fast">Accept</a>&nbsp;
+                    <a href="" class="btn btn-danger btn-sm animate__animated animate__fadeIn animate__fast">Reject</a>&nbsp;
                 </td>
                 @endforeach
                 @else

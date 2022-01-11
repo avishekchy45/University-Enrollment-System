@@ -43,6 +43,7 @@ class TeacherEnrollment extends Controller
     {
         // dd($req);
         $student_id = $req->student_id;
+        $session = $req->get('sessionname');
         $course_id = $req->slectcourse;
         $examtype = $req->examtype;
         // dd(count($course_id));
@@ -52,10 +53,11 @@ class TeacherEnrollment extends Controller
         foreach ($course_id as $value) {
             // dd($examtype[$value]);
             $req->validate([
+                "sessionname" => "exists:sessions,name,status,1",
                 "examtype"    => "required|array",
                 "examtype.$value"  => "required",
                 "slectcourse"    => "required|array",
-                "slectcourse.$value" => 'required|exists:courses,id|unique:enrollments,course_id,null,id,student_id,' . $student_id,
+                "slectcourse.$value" => 'required|exists:courses,id|unique:enrollments,course_id,NULL,id,student_id,' . $student_id . ',session,' . $session,
             ]);
             $obj = new Enrollment;
             $obj->course_id = $value;
@@ -73,7 +75,7 @@ class TeacherEnrollment extends Controller
     }
     public function updaterequests(request $request)
     {
-        $data = Session::select('name')->where("status", "=", 1)->get();
+        $data = Session::select('name')->get();
         $data2 = Advisor::select('batch')->where('teacher_id', '=',  session('username'))->get();
 
         // dd($data);
@@ -87,14 +89,15 @@ class TeacherEnrollment extends Controller
                 ->leftJoin('courses as c', 'enrollments.course_id', 'c.id')
                 ->where('batch', '=', $request->batch)
                 ->where('session', '=', $request->sessionname)
-                ->select('enrollments.id','c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type', 'enrollments.student_id')
+                ->select('enrollments.id', 'c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type', 'enrollments.student_id')
                 ->get();
             // dd($data3);
             return view('teacher.update_requests', compact('data', 'data2', 'data3'));
         }
         return view('teacher.update_requests', compact('data', 'data2'));
     }
-    public function updaterequestsfinal(request $req,$id){
+    public function updaterequestsfinal(request $req, $id)
+    {
         $obj = Enrollment::find($id);
         $obj->status = "Accepted";
         $obj->save();

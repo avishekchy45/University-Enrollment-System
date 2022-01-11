@@ -140,6 +140,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'session','sessionname' => [
+            'exists' => 'Enrollment closed for this session.',
+        ],
         'slectcourse.*' => [
             'required' => 'Select Course.',
             'unique' => 'Already Taken.',

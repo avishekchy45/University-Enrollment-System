@@ -35,6 +35,7 @@
             <th>Credit</th>
             <th>Semester</th>
             <th>Exam Type</th>
+            <th>Session</th>
             <th>Status</th>
             <th>Action</th>
         </thead>
@@ -49,6 +50,7 @@
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->credit}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$data1[$key]->semester}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->type}}</td>
+                <td class='animate__animated animate__fadeIn animate__slower'>{{$value->session}}</td>
                 <td class='animate__animated animate__fadeIn animate__slower'>{{$value->status}}</td>
                 <td>
                     <a href="" class="btn btn-danger btn-sm animate__animated animate__fadeIn animate__slower" data-toggle="modal" data-target="#myModal{{$value->id}}">Delete</a>
@@ -78,7 +80,7 @@
                 @endforeach
                 @else
             <tr class="text-center">
-                <td colspan="9" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Course Found</td>
+                <td colspan="10" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Course Found</td>
             </tr>
             @endif
         </tbody>

@@ -122,6 +122,9 @@
         <p class="text-right"><b>Exam Type:</b> Regular, Recourse </p>
         <p class="text-right"><b>Batch:</b> {{$batch}} </p>
     </div>
+    @if ($errors->has("sessionname"))
+    <div class="text-danger"> {{ $errors->first("sessionname") }} </div>
+    @endif
     <hr>
     <style>
         #form1 {

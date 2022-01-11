@@ -12,7 +12,7 @@ class AdminEnrollment extends Controller
 {
     public function overlaplist(request $request)
     {
-        $data = Session::select('name')->where("status", "=", 1)->get();
+        $data = Session::select('name')->get();
         if ($request->has('session')) {
             // $data2 = Enrollment::groupBy('course_id')
             //     ->select('course_id', Enrollment::raw("count(student_id) as enrolled"))

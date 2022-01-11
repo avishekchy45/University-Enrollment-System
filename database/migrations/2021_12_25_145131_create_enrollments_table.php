@@ -17,8 +17,8 @@ class CreateEnrollmentsTable extends Migration
             $table->id();
             $table->string('student_id');
             $table->bigInteger('course_id')->unsigned()->index();
-            $table->unique(['student_id', 'course_id']);
             $table->string('session');
+            $table->unique(['student_id', 'course_id','session']);
             $table->string('type');
             $table->string('status');
             $table->timestamp('created_at')->useCurrent();

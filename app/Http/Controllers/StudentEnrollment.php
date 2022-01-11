@@ -32,6 +32,8 @@ class StudentEnrollment extends Controller
         $enrolledcredit = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
             ->where('student_id', '=', session('username'))->sum('c.credit');
         //dd($t);
+        $student_id = session('username');
+        $session = $req->get('session');
         $course_id = $req->slectcourse;
         $examtype = $req->examtype;
         // dd(count($course_id));
@@ -43,10 +45,11 @@ class StudentEnrollment extends Controller
         foreach ($course_id as $value) {
             // dd($examtype[$value]);
             $req->validate([
+                "session" => "exists:sessions,name,status,1",
                 "examtype"    => "required|array",
                 "examtype.$value"  => "required",
                 "slectcourse"    => "required|array",
-                "slectcourse.$value" => 'required|exists:courses,id|unique:enrollments,course_id,null,id,student_id,' . session('username'),
+                "slectcourse.$value" => 'required|exists:courses,id|unique:enrollments,course_id,NULL,id,student_id,' . $student_id . ',session,' . $session,
             ]);
             $obj = new Enrollment;
             $obj->course_id = $value;
