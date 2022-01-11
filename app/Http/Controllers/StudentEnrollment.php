@@ -72,7 +72,7 @@ class StudentEnrollment extends Controller
                     session()->put("errormessage.$value", "Maximum Credit Exceeded");
                     // dd(compact('message'));
                     // return redirect()->back()->with('message',array($message));
-                    return back();
+                    // return back();
                 }
             } else {
                 // $message[$value] = "Maximum Credit Exceeded";
@@ -80,7 +80,7 @@ class StudentEnrollment extends Controller
                 session()->put("errormessage.$value", "Maximum Student Already Enrolled");
                 // dd(compact('message'));
                 // return redirect()->back()->with('message',array($message));
-                return back();
+                // return back();
             }
         }
         // dd($enrolledcredit);
