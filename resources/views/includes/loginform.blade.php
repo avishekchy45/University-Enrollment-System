@@ -1,6 +1,6 @@
 <br><br>
 <center>
-    <span style="font-size: 5vw; color: #0066ff; font-family: Calibri;">
+    <span style="font-size: 5rem; color: #0066ff; font-family: Calibri;">
         <strong>PUAIS 2.0</strong>
     </span>
     <br><br>

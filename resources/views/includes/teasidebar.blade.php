@@ -1,4 +1,9 @@
-<ul class='nav flex-column nav-pills nav-fill' style="margin-top: 0.5rem;">
+<nav class='navbar navbar-expand-sm navbar-light sideopt'>
+    <button class='navbar-toggler' style="background-image: url(images/3.png);" type='button' data-toggle='collapse' data-target='#collapsibleNavbar'>
+        <span class='navbar-toggler-icon'></span>
+    </button>
+    <div class='collapse navbar-collapse' style="text-align: center;" id='collapsibleNavbar'>
+        <ul class='nav flex-column nav-pills nav-fill' style="width:100%">
     <li class='nav-item'>
         <span class="power"><strong>E X C L U S I V E &nbsp; P O W E R S</strong> </span>
     </li>
@@ -38,4 +43,5 @@
         </a>
     </li>
     <br>
-</ul>
+</ul> </div>
+</nav>

@@ -82,7 +82,7 @@ body {
     color: rgb(241, 16, 8);
 }
 .power {
-    font-size: smaller;
+    font-size: 1rem;
     vertical-align: middle;
     color: black;
     font-style: normal;
@@ -133,10 +133,10 @@ body {
     position: relative;
     clear: both;
     bottom: 0;
-    margin-top: -0.5rem !important;
+    /* margin-top: -0.5rem !important; */
     margin-right: 1rem !important;
 }
-.mainopt {
+.sideopt {
     margin-left: -1rem !important;
 }
 .formheader {
@@ -215,14 +215,19 @@ input:checked + .slider:before {
         margin-left: 1rem !important;
         margin-right: 1rem !important;
     }
-    .pp{
+    .pp {
         margin-right: 5rem;
     }
 }
 @media only screen and (max-width: 600px) {
-    .mainopt {
+    .sideopt {
         /* margin-left: -1rem !important; */
         margin-right: -1rem !important;
     }
-   
+    .profilenav {
+       margin: -1.5rem;
+    }
+    .mainopt {
+        justify-content: center;
+     }
 }
