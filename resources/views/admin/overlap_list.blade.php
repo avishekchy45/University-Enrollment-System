@@ -5,27 +5,17 @@
 @endsection
 
 @section('main')
-<nav class='navbar navbar-expand-sm navbar-light mainopt'>
-    <!-- <div class="d-block d-md-none">
-        <span>Click here for more options</span>
-    </div> -->
-    <button class='navbar-toggler' style="background-image: url(images/3.png);" type='button' data-toggle='collapse' data-target='#collapsibleNavbar'>
-        <span class='navbar-toggler-icon'></span>
-    </button>
-    <div class='collapse navbar-collapse' style="text-align: center;" id='collapsibleNavbar'>
-        <ul class='navbar-nav'>
-            <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='sessionlist'> Session List </a>
-            </li>
-            <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='overlaplist'> Overlap List </a>
-            </li>
-            <li class='nav-item'>
-                <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='courselimit'> Course Limitations </a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<ul class='navbar-nav d-flex flex-row mainopt'>
+    <li class='nav-item'>
+        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='sessionlist'> Session List </a>
+    </li>
+    <li class='nav-item'>
+        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='overlaplist'> Overlap List </a>
+    </li>
+    <li class='nav-item'>
+        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='courselimit'> Course Limitations </a>
+    </li>
+</ul>
 <div class="optionline d-none d-sm-block">
     <span></span>
 </div>
@@ -82,22 +72,22 @@
         <tbody class="table-bordered">
             @if(count($overlap) > 0)
             @foreach(array_values($course) as $i)
-                @foreach (array_values($course) as $j)
-                    @if($i === $j or $overlap[$i][$j] == 'Same Semester' or $overlap[$i][$j] == 'Already Counted' or $overlap[$i][$j] == '0')
-                        @continue
-                    @endif
-                    <tr>
-                        <td class='animate__animated animate__fadeIn animate__slower'>
-                            {{ array_keys($course)[$i-1] }} (Semester: {{ $semester[array_values($course)[$i-1]] }} )
-                        </td>
-                        <td class="animate__animated animate__fadeIn animate__slower">
-                            {{ array_keys($course)[$j-1] }} (Semester: {{ $semester[array_values($course)[$j-1]] }}) 
-                        </td>
-                        <td class="animate__animated animate__fadeIn animate__slower">
-                            {{ $overlap[$i][$j] }}
-                        </td>
-                    </tr>
-                @endforeach
+            @foreach (array_values($course) as $j)
+            @if($i === $j or $overlap[$i][$j] == 'Same Semester' or $overlap[$i][$j] == 'Already Counted' or $overlap[$i][$j] == '0')
+            @continue
+            @endif
+            <tr>
+                <td class='animate__animated animate__fadeIn animate__slower'>
+                    {{ array_keys($course)[$i-1] }} (Semester: {{ $semester[array_values($course)[$i-1]] }} )
+                </td>
+                <td class="animate__animated animate__fadeIn animate__slower">
+                    {{ array_keys($course)[$j-1] }} (Semester: {{ $semester[array_values($course)[$j-1]] }})
+                </td>
+                <td class="animate__animated animate__fadeIn animate__slower">
+                    {{ $overlap[$i][$j] }}
+                </td>
+            </tr>
+            @endforeach
             @endforeach
             @else
             <tr class="text-center">
