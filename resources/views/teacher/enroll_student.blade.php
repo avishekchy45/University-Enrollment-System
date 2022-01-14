@@ -43,7 +43,7 @@
             <label for="teaid" class="col-sm-2 col-form-label">Select Batch </label>
             <div class="col-sm-10">
                 <select type="text" class="form-control" id="batch" name="batch" value="{{ old('batch') }}" required>
-                    <option value="" disabled selected>Select batch</option>
+                    <option value="" disabled selected>Select Batch</option>
                     @foreach($data1 as $d)
                     @if (old('batch')==$d->batch)
                     <option value={{$d->batch}} selected>{{$d->batch }}</option>
@@ -118,9 +118,9 @@
     </div>
     <div>
         <p class="text-right"><b>Session:</b> {{$sessionname}} </p>
-        <p class="text-right"><b>Student ID:</b> {{$student_id}} </p>
         <p class="text-right"><b>Exam Type:</b> Regular, Recourse </p>
         <p class="text-right"><b>Batch:</b> {{$batch}} </p>
+        <p class="text-right"><b>Student ID:</b> {{$student_id}} </p>
     </div>
     @if ($errors->has("sessionname"))
     <div class="text-danger"> {{ $errors->first("sessionname") }} </div>
@@ -196,7 +196,7 @@
                 @endforeach
                 @else
                 <tr class="text-center">
-                    <td colspan="9">No Course Found</td>
+                    <td colspan="9" class="alert alert-danger animate__animated animate__fadeIn animate__slower">No Course Found</td>
                 </tr>
                 @endif
             </tbody>
