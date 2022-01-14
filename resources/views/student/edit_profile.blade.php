@@ -40,15 +40,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">New Password</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="password" name="newpassword">
-                @if ($errors->has('password'))
-                <div class="form-text alert alert-danger"> {{ $errors->first('password') }} </div>
-                @endif
-            </div>
-        </div>
-        <div class="form-group row">
             <label for="phone" class="col-sm-2 col-form-label">Phone Number</label>
             <div class="col-sm-10">
                 <input type="tel" class="form-control" id="phone" name="phone" value="{{ $data->phone_num }}">
@@ -63,6 +54,15 @@
                 <input type="text" class="form-control" id="address" name="address" value="{{$data->address }}">
                 @if ($errors->has('address'))
                 <div class="form-text alert alert-danger"> {{ $errors->first('address') }} </div>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" name="newpassword">
+                @if ($errors->has('password'))
+                <div class="form-text alert alert-danger"> {{ $errors->first('password') }} </div>
                 @endif
             </div>
         </div>

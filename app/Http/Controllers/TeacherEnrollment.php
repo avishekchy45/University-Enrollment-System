@@ -13,7 +13,7 @@ class TeacherEnrollment extends Controller
 {
     public function enrollstudent(request $request)
     {
-        $data = Session::select('name')->where("status", "=", 1)->get();
+        $data = Session::select('name')->get();
         $data1 = Advisor::select('batch')->where("teacher_id", "=", session('username'))->get();
         if ($request->has('search')) {
             $request->validate([

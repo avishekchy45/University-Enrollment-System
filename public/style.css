@@ -123,6 +123,7 @@ body {
     border: skyblue 2px solid;
     float: center;
     text-align: center;
+    height: 100%;
 }
 .options:hover {
     background-image: url(images/2.png);
@@ -133,7 +134,7 @@ body {
     position: relative;
     clear: both;
     bottom: 0;
-    /* margin-top: -0.5rem !important; */
+    margin-top: 0.5rem !important;
     margin-right: 1rem !important;
 }
 .sideopt {

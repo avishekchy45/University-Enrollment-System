@@ -7,13 +7,13 @@
 @section('main')
 <ul class='navbar-nav d-flex flex-row mainopt'>
     <li class='nav-item'>
-        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='sessionlist'> Session List </a>
+        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-4' href='sessionlist'> Session List </a>
     </li>
     <li class='nav-item'>
-        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='overlaplist'> Overlap List </a>
+        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-4' href='courselimit'> Course Limitations </a>
     </li>
     <li class='nav-item'>
-        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-5' href='courselimit'> Course Limitations </a>
+        <a class='nav-link text-uppercase options mr-1 mt-2 mb-0 px-4' href='overlaplist'> Overlap List </a>
     </li>
 </ul>
 <div class="optionline d-none d-sm-block">
@@ -43,7 +43,7 @@
     <span style="float: left; font-family: Palatino Linotype, Verdana; font-size: 12pt">
         List of available Sessions ( {{$data->count()}} Entries)
     </span>
-    <table class='table table-sm table-striped table-hover table-responsive-sm text-center list' id='counterlist'>
+    <table class='table table-sm table-striped table-hover text-center list' id='counterlist'>
         <thead class="tableheader">
             <th>No.</th>
             <th>Session</th>
