@@ -71,6 +71,7 @@ class StudentEnrollment extends Controller
                     session()->put("successmessage.$value", "Successfully Added");
                 } else {
                     // $message[$value] = "Maximum Credit Exceeded";
+                    $enrolledcredit = $enrolledcredit - $credit->credit;
                     session()->forget("successmessage.$value");
                     session()->put("errormessage.$value", "Maximum Credit Exceeded");
                     // dd(compact('message'));
@@ -79,6 +80,7 @@ class StudentEnrollment extends Controller
                 }
             } else {
                 // $message[$value] = "Maximum Credit Exceeded";
+                $enrolledcredit = $enrolledcredit - $credit->credit;
                 session()->forget("successmessage.$value");
                 session()->put("errormessage.$value", "Maximum Student Already Enrolled");
                 // dd(compact('message'));
