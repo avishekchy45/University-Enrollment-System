@@ -4,7 +4,7 @@
 
 > A student enrollment system with all the features of enrollment which generates a list of overlapped course of different semesters.
 
----
+https://user-images.githubusercontent.com/63364024/150656441-c5f9f414-87b3-4c10-9b61-213f3e2e0303.mp4
 
 <br>
 
@@ -30,7 +30,6 @@ All the procedures for enrollment of an university has been implemented in this 
     -   [Admin Panel](#admin-panel)
     -   [Student Panel](#student-panel)
     -   [Teacher Panel](#teacher-panel)
-    -   [Snapshots](#some-snapshots)
 -   [Deployments](#deployments)
 -   [Collaborators](#collaborators)
 -   [Contributing](#contributing)
@@ -110,12 +109,6 @@ This project has three different panels of independent responsibility which are 
 -   Update his/her profile info(Name, E-mail, Password etc.)
 -   Enroll his/her advising student to any courses of running session flying in the face of any limitation.
 -   Update status(Accept, Reject) of sent requests by his/her advising students.
-
-<p align="right">(<a href="#Top">Back to Top</a>)</p>
-
-### Some Snapshots
-
-![image](https://user-images.githubusercontent.com/63364024/149634286-7ff37414-3411-49f5-b177-54854ebb7def.png)
 
 <p align="right">(<a href="#Top">Back to Top</a>)</p>
 
