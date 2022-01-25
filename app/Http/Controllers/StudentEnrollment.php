@@ -30,7 +30,7 @@ class StudentEnrollment extends Controller
     public function enrollmentfinal(request $req)
     {
         $enrolledcredit = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
-            ->where('student_id', '=', session('username'))->sum('c.credit');
+            ->where('student_id', '=', session('username'))->where('session', '=', "$req->get('session')")->sum('c.credit');
         //dd($t);
         $student_id = session('username');
         $session = $req->get('session');
@@ -60,7 +60,7 @@ class StudentEnrollment extends Controller
             // dd($obj);
             $credit = Course::where('id', '=', $value)->select('credit')->first();
             $enrolledcredit = $credit->credit + $enrolledcredit;
-            $enrolledstudent = Enrollment::where('course_id', '=', $value)->count();
+            $enrolledstudent = Enrollment::where('course_id', '=', $value)->where('session', '=', "$req->get('session')")->count();
             // dd($enrolled);
             // echo $credit->credit;
             if ($enrolledstudent < $limit->max_student) {
@@ -96,8 +96,10 @@ class StudentEnrollment extends Controller
     public function checkrequests()
     {
         $data = Enrollment::leftJoin('courses as c', 'course_id', 'c.id')
-            ->select('c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'status', 'enrollments.type', 'enrollments.id')
+            ->leftJoin('sessions as s', 'name', 'enrollments.session')
+            ->select('c.title as title', 'c.code as code', 'c.type as coursetype', 'c.credit as credit', 'session', 'enrollments.status', 'enrollments.type', 'enrollments.id')
             ->where('student_id', '=', session('username'))
+            ->where('s.status', '=', 1)
             ->orderby('enrollments.created_at')
             ->get();
         $enrolledcredit = 0;
