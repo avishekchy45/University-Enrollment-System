@@ -2,7 +2,7 @@
 
 # University-Enrollment-System
 
-> A student enrollment system with all the features of enrollment which generates a list of overlapped course of different semesters.
+> A student enrollment system with all the features of enrollment which generates a list of overlapped courses of different semesters.
 
 https://user-images.githubusercontent.com/63364024/150656441-c5f9f414-87b3-4c10-9b61-213f3e2e0303.mp4
 
@@ -16,9 +16,9 @@ https://user-images.githubusercontent.com/63364024/150656441-c5f9f414-87b3-4c10-
 
 ## Description
 
-During Enrollment, sometimes it happens that, student has exceeded the limit of credit. And sometimes a student can’t enroll as the section has already the maximum number of students enrolled. Then manual entry is given.
+During Enrollment, sometimes it happens that, student has exceeded the limit of credit. And sometimes a student can’t enroll as the section already has the maximum number of students enrolled. Then manual entry is given.
 
-All the procedures for enrollment of an university has been implemented in this project. During enrollment, while a student selects a course, if there is any limit, then message will be shown immediately. Option for the teacher will also be available to give the manual entry. Besides, this project will generate a list of overlapped courses after pre-enrollment which will be helpful for teachers to make class routine. This project assumes that the routine is not yet completed. The aim of this project is to find those courses having no overlapping students.
+All the procedures for enrollment of a university have been implemented in this project. During enrollment, while a student selects a course, if there is any limit, then a message will be shown immediately. Option for the teacher(advisor) will also be available to give the manual entry. Besides, this project will generate a list of overlapped courses after pre-enrollment which will be helpful for teachers to make class routine. This project assumes that the routine is not yet completed. The aim of this project is to find those courses having no overlapping students.
 
 <p align="right">(<a href="#Top">Back to Top</a>)</p>
 
@@ -47,11 +47,11 @@ All the procedures for enrollment of an university has been implemented in this 
 
 5. Run `php artisan key:generate`
 
-6. Run `php artisan migrate` / Import SQL file
+6. Run `php artisan migrate`
 
-7. Run `php artisan serve`
+7. Run `php artisan db:seed`
 
-8. Run `php artisan db:seed`
+8. Run `php artisan serve`
 
 To login as admin => ID: `demo_admin` Pass: `123456`
 
@@ -97,8 +97,8 @@ This project has three different panels of independent responsibility which are 
 #### Responsibilities are to:
 
 -   Update his/her profile info(Name, E-mail, Password etc.)
--   Send request to his/her Advisor to enroll multiple courses of running session.
--   Check status(Pending, Aprroved, Rejected) of sent request.
+-   Send request to his/her Advisor to enroll multiple courses of the running session.
+-   Check status(Pending, Approved, Rejected) of sent request.
 
 <p align="right">(<a href="#Top">Back to Top</a>)</p>
 
